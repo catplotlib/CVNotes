@@ -6,7 +6,7 @@ description = "Basic goals and applications of Computer Vision."
 image = "intro.jpg"
 +++
 
-# to Computer Vision: Basics, Goals, and Applications
+# Introduction to Computer Vision: Basics, Goals, and Applications
 
 In the era of artificial intelligence and machine learning, computer vision has emerged as a pivotal subfield. Rooted in the convergence of machine learning, graphics, and biology, computer vision mimics the complexity and intricacy of human vision using computers to understand and interpret the real world.
 
