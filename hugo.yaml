@@ -56,7 +56,7 @@ params:
 
     sidebar:
         emoji: 🤖
-        subtitle: All things Computer Vision! on Computer Vision
+        subtitle: All things Computer Vision!
         avatar:
             enabled: true
             local: true
