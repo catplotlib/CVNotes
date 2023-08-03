@@ -2,12 +2,12 @@ baseurl: https://example.com
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
-title: CV Notes
+title: PixelGaze
 
 # languages:
 #     en:
 #         languageName: English
-#         title: CV Notes
+#         title: PixelGaze
 #         description: Example description
 #         weight: 1
 #     hi:

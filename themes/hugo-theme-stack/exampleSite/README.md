@@ -1,1 +1,1 @@
-CV Notes modified from https://github.com/gohugoio/hugoBasicExample
+PixelGaze modified from https://github.com/gohugoio/hugoBasicExample
