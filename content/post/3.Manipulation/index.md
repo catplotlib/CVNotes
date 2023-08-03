@@ -21,22 +21,14 @@ In OpenCV, you can translate an image using the `warpAffine()` function, which t
 Here's a simple example:
 
 ```python
-import cv2
-import numpy as np
-
-# Load the image
-img = cv2.imread('image.jpg')
-
 # Define the translation matrix
 M = np.float32([[1, 0, 25], [0, 1, 50]]) # Shift 25 pixels right and 50 pixels down
 
 # Apply the translation
 translated = cv2.warpAffine(img, M, (img.shape[1], img.shape[0]))
-
-cv2.imshow('Translated Image', translated)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
  ```
+
+![Translated Image](t.png)
 
 ## Resizing
 Resizing is another commonly used image manipulation technique. It changes the size of an image without altering its general shape.
@@ -44,18 +36,10 @@ Resizing is another commonly used image manipulation technique. It changes the s
 In OpenCV, you can use the resize() function to resize an image. It takes the original image and the desired size as arguments. If you want to maintain the aspect ratio, you can calculate the aspect ratio of the original image and resize accordingly.
 
 ```python
-import cv2
-
-# Load the image
-img = cv2.imread('image.jpg')
-
 # Resize the image
 resized = cv2.resize(img, (200, 200)) # New size: 200x200
-
-cv2.imshow('Resized Image', resized)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
 ```
+![Resized Image](r.png)
 
 ## Cropping
 Cropping an image involves selecting a rectangular region inside an image and removing everything outside that region. It can be used to focus on a particular object or area within the image.
@@ -63,39 +47,24 @@ Cropping an image involves selecting a rectangular region inside an image and re
 Cropping in OpenCV is as simple as using array slicing, since images are represented as NumPy arrays.
 
 ```python
-import cv2
-
-# Load the image
-img = cv2.imread('image.jpg')
-
 # Crop the image
 cropped = img[50:200, 100:300] # Rows 50 to 200, columns 100 to 300
-
-cv2.imshow('Cropped Image', cropped)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
 ```
-
+![Cropped Image](cr.png)
 ## Rotating
 Rotating an image involves changing the orientation of an image by a certain angle. In OpenCV, you can use the getRotationMatrix2D() function to get a rotation matrix, and then use warpAffine() to apply this matrix.
 
 ```python
-import cv2
-
-# Load the image
-img = cv2.imread('image.jpg')
-
 # Get the rotation matrix
 rows, cols = img.shape[:2]
 M = cv2.getRotationMatrix2D((cols/2, rows/2), 45, 1) # Rotate 45 degrees around the center of the image
 
 # Rotate the image
 rotated = cv2.warpAffine(img, M, (cols, rows))
-
-cv2.imshow('Rotated Image', rotated)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
 ```
+![Rotated Image](ro.png)
+
+## Conclusion
 These are just a few examples of the many image manipulation techniques that are possible using modern imaging libraries like OpenCV. 
 
 Whether you are developing an image processing application, building a computer vision model, or simply experimenting with digital images, these tools provide a powerful way to manipulate and transform your visual data.

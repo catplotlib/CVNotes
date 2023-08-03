@@ -56,7 +56,7 @@ The Grayscale color space includes various shades of gray, with each pixel repre
 - RGB to Grayscale: One commonly used method to convert an RGB image to grayscale is to take a weighted average of the R, G, and B values for each pixel. This accounts for human perception—we see green more strongly than other colors. The formula is typically:
 
     $$
-    Grayscale = 0.2989*R + 0.5870*G + 0.1140*B
+    Grayscale = 0.2989\*R + 0.5870\*G + 0.1140\*B
     $$
 
     ```python
@@ -67,7 +67,7 @@ The Grayscale color space includes various shades of gray, with each pixel repre
 
     - Calculate the maximum (Max) and minimum (Min) values among R, G, and B.
     - The Hue (H) is calculated based on which of the R, G, or B values is the Max value. Different formulas are used depending on whether R, G, or B is the maximum.
-    The Saturation (S) is calculated as `(Max - Min) / Max`
+    The Saturation (S) is calculated as $$(Max - Min) / Max$$
     - The Value (V) is simply the Max value.
     
     ```python
