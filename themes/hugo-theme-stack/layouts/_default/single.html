@@ -30,6 +30,11 @@
     {{ if .Params.links }}
         {{ partial "article/components/links" . }}
     {{ end }}
+    
+    {{ if or .Params.math .Site.Params.math }}
+    {{ partial "math.html" . }}
+    {{ end }}
+
 
     {{ partial "article/components/related-content" . }}
      
