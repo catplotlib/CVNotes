@@ -172,6 +172,15 @@ The hysteresis process can be visualized as a connectivity operation where weak 
 
 The Canny Edge Detection algorithm combines various techniques to achieve a robust, accurate, and well-defined edge detection. The sequence of its steps – smoothing, gradient computation, non-maximum suppression, double thresholding, and edge tracking – ensures that it's resistant to noise, provides a clear edge map, and is able to capture true edges in the image.
 
+## Comparison of Edge Detection Filters
+
+| Filter | Pros | Cons |
+|--------|------|------|
+| **Sobel** | - Effective in detecting vertical and horizontal edges separately. <br> - Less sensitive to noise compared to the Laplacian. | - May not effectively capture diagonal edges unless both filters (horizontal and vertical) are used. <br> - Edges might be thick and might require further processing for thinning. |
+| **Laplacian** | - Captures edges from all orientations without the need for multiple filters. <br>  - Produces a single output highlighting rapid intensity changes. | - Very sensitive to noise due to second-order derivative computation. <br> - Can produce double-edge effect where edges appear thicker. |
+| **Canny** | - Produces thin, well-defined edges. <br> - Has built-in noise reduction step. <br> - Considers edge directions and magnitudes leading to more accurate edge detection. | - Requires more computation due to multiple stages involved. <br> - Threshold values for edge detection need to be carefully selected for best results. |
+
+
 ## Conclusion
 
 Edge detection is fundamental in computer vision, and understanding the underlying methods provides a robust foundation for more advanced tasks.  Filters are the foundational elements of edge detection. By designing filters that respond maximally to changes in intensity and employing techniques like non-maximum suppression, we can effectively highlight and isolate edges in images. Grasping the filtering process is crucial for understanding the essence of edge detection and, by extension, a multitude of other operations in image processing and computer vision. While the Sobel, Laplacian, and Canny methods are popular, many other techniques are available. The choice of method often depends on the specific application and the nature of the images being processed.
