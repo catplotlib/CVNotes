@@ -1,7 +1,7 @@
 +++
 author = "Puja Chaudhury"
 title = "Edge Detection"
-date = "2023-08-04"
+date = "2023-08-05"
 description = "Why Edges Matter"
 image = "bg.png"
 +++

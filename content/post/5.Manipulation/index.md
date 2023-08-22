@@ -1,7 +1,7 @@
 +++
 author = "Puja Chaudhury"
 title = "Image Manipulation Techniques"
-date = "2023-08-03"
+date = "2023-08-04"
 description = "Translation, Resizing, Cropping, and Rotating"
 image = "bg.png"
 +++
