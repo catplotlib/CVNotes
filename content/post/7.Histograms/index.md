@@ -71,10 +71,11 @@ equalized_image = cv2.equalizeHist(image)
 cv2.imwrite('equalized_image.jpg', equalized_image)
 ```
 
-![Histogram Equalization](hist.png)
+![Histogram Equalization](ba.png)
 
 ## Why Should You Care?
 Well, first off, improving image contrast enhances visibility, making it easier for both humans and machine learning algorithms to interpret the image. So, if you're dabbling in machine learning or computer vision, this is a must-know. Plus, if you’re into photography or graphic design, understanding histograms can give you greater control over your digital creations.
+
 
 ## Closing Thoughts
 So that's the 101 on image histograms and how they can be a powerful tool for improving image contrast. In the grand scheme of things, this is a pretty basic yet critical concept to understand if you're looking to become proficient in image processing.
