@@ -3,7 +3,7 @@ author = "Puja Chaudhury"
 title = "Feature Extraction in Images"
 date = "2023-08-08"
 description = "A Dive into SIFT, SURF, and HOG"
-image = "intro.jpg"
+image = "intro.png"
 +++
 ## Introduction
 
