@@ -44,7 +44,7 @@ equalized_image = cv2.equalizeHist(image)
 # Save the enhanced image
 cv2.imwrite('equalized_image.jpg', equalized_image)
 ```
-
+![Histogram Equalization](equalised.png)
 
 ## Contrast Stretching
 ### What is Contrast Stretching?
@@ -56,20 +56,43 @@ The basic algorithm for contrast stretching is quite straightforward:
 - Identify Min and Max Intensities: Find the minimum and maximum intensity values in the image.
 - Stretch the Intensity Levels: Apply a linear transformation to stretch the intensity levels between the desired minimum and maximum.
 ```python
+import cv2
 import numpy as np
+import matplotlib.pyplot as plt
+
+def contrast_stretching(img):
+    # Initialize min and max pixel values for each channel
+    min_out = 0
+    max_out = 255
+    
+    # Split the image into its color channels
+    b, g, r = cv2.split(img)
+    
+    # Perform contrast stretching for each channel
+    for channel in [b, g, r]:
+        min_in = np.min(channel)
+        max_in = np.max(channel)
+        
+        # Apply the contrast stretching transformation
+        channel[:] = ((channel - min_in) / (max_in - min_in)) * (max_out - min_out) + min_out
+    
+    # Merge the channels back together
+    return cv2.merge([b, g, r])
 
 # Read the image
-image = cv2.imread('image.jpg', 0)
-
-# Find min and max intensities
-minI, maxI = np.min(image), np.max(image)
+img = cv2.imread('nature.png')
 
 # Perform contrast stretching
-stretched_image = 255 * (image - minI) / (maxI - minI)
+stretched_img = contrast_stretching(img)
 
-# Save the enhanced image
-cv2.imwrite('stretched_image.jpg', stretched_image)
+# Convert BGR images to RGB (OpenCV loads images in BGR)
+img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+stretched_img = cv2.cvtColor(stretched_img, cv2.COLOR_BGR2RGB)
+
+#Save the enhanced image
+cv2.imwrite('stretched_img.jpg', stretched_img)
 ```
+![Contrast Stretching](contrast.png)
 
 ## Conclusion
 Both histogram equalization and contrast stretching are powerful tools for image enhancement. While histogram equalization is more effective for images with poor contrast, contrast stretching is simpler and can be more intuitive to use. Either way, mastering these techniques can significantly up your image processing game.
