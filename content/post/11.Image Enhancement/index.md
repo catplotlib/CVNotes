@@ -3,7 +3,7 @@ author = "Puja Chaudhury"
 title = "Mastering Image Enhancement Techniques"
 date = "2023-08-11"
 description = "Histogram Equalization and Contrast Stretching"
-image = "intro.jpg"
+image = "intro.png"
 +++
 
 Hey there, tech enthusiasts! Today, we're diving deep into the world of image enhancement. If you've ever wondered how to make your images pop, you're in the right place. We'll be exploring two powerful techniques: histogram equalization and contrast stretching. These methods are particularly useful when you're dealing with low-contrast or poorly lit images. So, let's get started!
