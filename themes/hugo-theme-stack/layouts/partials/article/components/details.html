@@ -29,12 +29,6 @@
     {{ if $showFooter }}
     <footer class="article-time">
         {{ if $showDate }}
-            <div>
-                {{ partial "helper/icon" "date" }}
-                <time class="article-time--published">
-                    {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-                </time>
-            </div>
         {{ end }}
 
         {{ if $showReadingTime }}
