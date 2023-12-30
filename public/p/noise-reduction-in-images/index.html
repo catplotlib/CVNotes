@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Understanding and Implementing Techniques.'>
+<title>Noise Reduction in Images</title>
+
+<link rel='canonical' href='https://example.com/p/noise-reduction-in-images/'>
+
+<link rel="stylesheet" href="/scss/style.min.9c211a75d0637cf30839630db280175dc68c59ff41d2aedae30ba7128288e456.css"><meta property='og:title' content='Noise Reduction in Images'>
+<meta property='og:description' content='Understanding and Implementing Techniques.'>
+<meta property='og:url' content='https://example.com/p/noise-reduction-in-images/'>
+<meta property='og:site_name' content='PixelGaze'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-10-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/noise-reduction-in-images/h.png' />
+<meta name="twitter:title" content="Noise Reduction in Images">
+<meta name="twitter:description" content="Understanding and Implementing Techniques."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/noise-reduction-in-images/h.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hube0be085028f4eb35d0b6d840368b84a_36345_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">PixelGaze</a></h1>
+            <h2 class="site-description">All things Computer Vision!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/catplotlib'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/catplotlib'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#understanding-image-noise">Understanding Image Noise</a>
+      <ol>
+        <li><a href="#types-of-noise">Types of Noise</a></li>
+      </ol>
+    </li>
+    <li><a href="#implementing-noise-reduction-techniques">Implementing Noise Reduction Techniques</a>
+      <ol>
+        <li><a href="#gaussian-noise-reduction">Gaussian Noise Reduction</a></li>
+        <li><a href="#salt-and-pepper-noise-reduction">Salt-and-Pepper Noise Reduction</a></li>
+        <li><a href="#speckle-noise-reduction">Speckle Noise Reduction</a></li>
+        <li><a href="#poisson-noise-reduction">Poisson Noise Reduction</a></li>
+      </ol>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/noise-reduction-in-images/">
+                <img src="/p/noise-reduction-in-images/h_hu93fdf8d992e16769765ec0a6cb6bc877_432313_800x0_resize_box_3.png"
+                        srcset="/p/noise-reduction-in-images/h_hu93fdf8d992e16769765ec0a6cb6bc877_432313_800x0_resize_box_3.png 800w, /p/noise-reduction-in-images/h_hu93fdf8d992e16769765ec0a6cb6bc877_432313_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="327" 
+                        loading="lazy"
+                        alt="Featured image of post Noise Reduction in Images" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/noise-reduction-in-images/">Noise Reduction in Images</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Understanding and Implementing Techniques.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Hey there! Today we&rsquo;re diving deep into the world of image noise and its reduction techniques. If you&rsquo;ve ever snapped a photo in low light conditions or dealt with raw sensor data, you&rsquo;ve likely encountered image noise. This pesky artifact can compromise image quality, making it difficult for both humans and algorithms to interpret the content. In this blog, we&rsquo;ll discuss different types of noise and how to tackle them using Python and OpenCV.</p>
+<h2 id="understanding-image-noise">Understanding Image Noise</h2>
+<h3 id="types-of-noise">Types of Noise</h3>
+<ul>
+<li>Gaussian Noise: This is caused by electronic interference and sensor limitations. It&rsquo;s normally distributed and affects each pixel independently.
+<img src="https://www.seas.ucla.edu/dsplab/ie/lenna_gau.JPG"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Gaussian Noise"
+	
+	
+></li>
+<li>Salt-and-Pepper Noise: This type of noise presents itself as sparsely occurring white and black pixels.
+<img src="https://www.fit.vutbr.cz/~vasicek/imagedb/img_corrupted/impnoise_005/108073.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Salt-and-Pepper Noise"
+	
+	
+></li>
+<li>Speckle Noise: This occurs in images from coherent imaging systems, like ultrasound or synthetic aperture radar.
+<img src="https://www.researchgate.net/publication/221906504/figure/fig3/AS:305311647846404@1449803377512/A-contaminated-image-Fig-5-with-speckle-noise-and-Gaussian-noise-both-having-the.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Speckle Noise"
+	
+	
+></li>
+</ul>
+<p>Poisson Noise: Predominant in low-light conditions, this noise is proportional to the brightness of the image.</p>
+<p><img src="https://i.stack.imgur.com/wVRcA.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Poisson Noise"
+	
+	
+></p>
+<h2 id="implementing-noise-reduction-techniques">Implementing Noise Reduction Techniques</h2>
+<p>Let&rsquo;s jump into some code! We&rsquo;ll tackle noise reduction techniques for each type of noise. We&rsquo;ll use OpenCV and Matplotlib for this.</p>
+<p>First off, let&rsquo;s install the required packages if you haven&rsquo;t already:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install opencv-python matplotlib numpy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The code for displaying images is the same for all techniques, so we&rsquo;ll define a function for that.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">display_images</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="n">image_denoised</span><span class="p">,</span> <span class="n">noise_type</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Display the original noisy image and the denoised image side-by-side.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        image_with_noise (numpy.ndarray): The noisy image.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        image_denoised (numpy.ndarray): The denoised image.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        noise_type (str): The type of noise added (&#34;Gaussian&#34;, &#34;Salt-and-Pepper&#34;, etc.).
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Convert BGR images to RGB for displaying with matplotlib</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_with_noise_rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_denoised_rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image_denoised</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Display the images using matplotlib</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Image with </span><span class="si">{</span><span class="n">noise_type</span><span class="si">}</span><span class="s1"> Noise&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_with_noise_rgb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Denoised Image&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_denoised_rgb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="gaussian-noise-reduction">Gaussian Noise Reduction</h3>
+<p>For Gaussian noise, a common technique is to use a Gaussian filter.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Add Gaussian noise</span>
+</span></span><span class="line"><span class="cl"><span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Apply Gaussian filter</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_denoised</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Display the images</span>
+</span></span><span class="line"><span class="cl"><span class="n">display_images</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="n">image_denoised</span><span class="p">,</span> <span class="s2">&#34;Gaussian&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://i.ibb.co/rZHC2Lq/gausrem.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Gaussian Denoise"
+	
+	
+></p>
+<h3 id="salt-and-pepper-noise-reduction">Salt-and-Pepper Noise Reduction</h3>
+<p>For salt-and-pepper noise, we&rsquo;ll use a median filter. This filter replaces each pixel with the median value of its neighboring pixels. It&rsquo;s effective for removing salt-and-pepper noise while preserving edges.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">image</span> <span class="o">*</span> <span class="p">(</span><span class="n">noise</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">255</span> <span class="o">*</span> <span class="p">(</span><span class="n">noise</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">image_with_noise</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>  <span class="c1"># Ensure data type is uint8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Apply median filter</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_denoised</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Display the images</span>
+</span></span><span class="line"><span class="cl">    <span class="n">display_images</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="n">image_denoised</span><span class="p">,</span> <span class="s2">&#34;Salt-and-Pepper&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://i.ibb.co/z8HZqjz/snprem.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Salt-and-Pepper Denoise"
+	
+	
+></p>
+<h3 id="speckle-noise-reduction">Speckle Noise Reduction</h3>
+<p>For speckle noise, we&rsquo;ll use a bilateral filter. This filter preserves edges while removing noise by replacing each pixel with a weighted average of its neighboring pixels. The weights are calculated using a Gaussian filter in the spatial domain and a Gaussian function of pixel intensity differences in the intensity domain.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Add more speckle noise (increase standard deviation to, say, 0.5)</span>
+</span></span><span class="line"><span class="cl"><span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Apply bilateral filter</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_denoised</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Display the images</span>
+</span></span><span class="line"><span class="cl"><span class="n">display_images</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="n">image_denoised</span><span class="p">,</span> <span class="s2">&#34;Speckle&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://i.ibb.co/6yzGpQp/spekrem.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Speckle Denoise"
+	
+	
+></p>
+<h3 id="poisson-noise-reduction">Poisson Noise Reduction</h3>
+<p>For Poisson noise, we&rsquo;ll use a non-local means filter. This filter replaces each pixel with a weighted average of its neighboring pixels, where the weights are calculated using a Gaussian function of pixel intensity differences. It&rsquo;s effective for removing Poisson noise while preserving edges.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Add more Poisson noise (increase lambda to, say, 60)</span>
+</span></span><span class="line"><span class="cl"><span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">255</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Apply Non-Local Means Denoising</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_denoised</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">fastNlMeansDenoisingColored</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Display the images</span>
+</span></span><span class="line"><span class="cl"><span class="n">display_images</span><span class="p">(</span><span class="n">image_with_noise</span><span class="p">,</span> <span class="n">image_denoised</span><span class="p">,</span> <span class="s2">&#34;Poisson&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://i.ibb.co/VwvZg7Q/posrem.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Poisson Denoise"
+	
+	
+></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>We&rsquo;ve explored four common types of image noise and corresponding denoising techniques. These techniques are fundamental in image processing and are commonly used in various applications from medical imaging to computer vision. Happy coding!</p>
+<p>Hope you found this useful! Until next time, keep reducing that noise! 📸🔊🔽</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+     
+    
+        
+    
+
+    
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

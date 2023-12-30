@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A Comprehensive Understanding of Images and Pixels'>
+<title>Understanding Images and Pixels</title>
+
+<link rel='canonical' href='https://example.com/p/understanding-images-and-pixels/'>
+
+<link rel="stylesheet" href="/scss/style.min.9c211a75d0637cf30839630db280175dc68c59ff41d2aedae30ba7128288e456.css"><meta property='og:title' content='Understanding Images and Pixels'>
+<meta property='og:description' content='A Comprehensive Understanding of Images and Pixels'>
+<meta property='og:url' content='https://example.com/p/understanding-images-and-pixels/'>
+<meta property='og:site_name' content='PixelGaze'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/understanding-images-and-pixels/bg.jpg' />
+<meta name="twitter:title" content="Understanding Images and Pixels">
+<meta name="twitter:description" content="A Comprehensive Understanding of Images and Pixels"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/understanding-images-and-pixels/bg.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hube0be085028f4eb35d0b6d840368b84a_36345_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">PixelGaze</a></h1>
+            <h2 class="site-description">All things Computer Vision!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/catplotlib'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/catplotlib'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#understanding-images">Understanding Images</a></li>
+    <li><a href="#pixels-the-building-blocks-of-digital-images">Pixels: The Building Blocks of Digital Images</a></li>
+    <li><a href="#journey-through-color-spaces">Journey Through Color Spaces</a>
+      <ol>
+        <li><a href="#conversion-between-color-spaces">Conversion between color spaces</a></li>
+      </ol>
+    </li>
+    <li><a href="#understanding-image-types">Understanding Image Types</a></li>
+    <li><a href="#image-resolution-and-quality">Image Resolution and Quality</a></li>
+    <li><a href="#image-file-formats">Image File Formats</a></li>
+    <li><a href="#image-data-structure">Image Data Structure</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/understanding-images-and-pixels/">
+                <img src="/p/understanding-images-and-pixels/bg_hubcb1ca1dfe9afc68371ae25060552f13_411161_800x0_resize_q75_box.jpg"
+                        srcset="/p/understanding-images-and-pixels/bg_hubcb1ca1dfe9afc68371ae25060552f13_411161_800x0_resize_q75_box.jpg 800w, /p/understanding-images-and-pixels/bg_hubcb1ca1dfe9afc68371ae25060552f13_411161_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Understanding Images and Pixels" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/understanding-images-and-pixels/">Understanding Images and Pixels</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A Comprehensive Understanding of Images and Pixels
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="understanding-images">Understanding Images</h2>
+<p>In the simplest terms, a digital image is a pictorial representation of data, an array of pixels displayed on a digital screen. A pixel, short for &ldquo;<strong>picture element</strong>&rdquo; is the smallest controllable element of a picture represented on the screen.</p>
+<p>Lets visualise a grid of pixels using the image of a cute dog.</p>
+<p><img src="/p/understanding-images-and-pixels/dog.jpeg"
+	width="481"
+	height="612"
+	srcset="/p/understanding-images-and-pixels/dog_hucc557ac7d0e6d5e867662940047c4e74_31029_480x0_resize_q75_box.jpeg 480w, /p/understanding-images-and-pixels/dog_hucc557ac7d0e6d5e867662940047c4e74_31029_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="A cute dog"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="78"
+		data-flex-basis="188px"
+	
+>
+<img src="/p/understanding-images-and-pixels/pixels.png"
+	width="408"
+	height="413"
+	srcset="/p/understanding-images-and-pixels/pixels_huaf754870ef59a70a33469a172c415122_5764_480x0_resize_box_3.png 480w, /p/understanding-images-and-pixels/pixels_huaf754870ef59a70a33469a172c415122_5764_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Visualisation of pixels on the cute dog"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="98"
+		data-flex-basis="237px"
+	
+></p>
+<p>When talking about digital images, we commonly refer to them as two-dimensional arrays of individual pixels arranged in columns and rows. Om zooming using the code below in we can see how the image is made up of individual pixels.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">cv2</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load the image</span>
+</span></span><span class="line"><span class="cl"><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;dog.jpeg&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the region of interest (roi) coordinates</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_start</span><span class="p">,</span> <span class="n">y_start</span><span class="p">,</span> <span class="n">x_end</span><span class="p">,</span> <span class="n">y_end</span> <span class="o">=</span> <span class="mi">240</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">310</span>  <span class="c1"># Change these as per your image and region of interest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract the region of interest (roi)</span>
+</span></span><span class="line"><span class="cl"><span class="n">roi</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">y_start</span><span class="p">:</span><span class="n">y_end</span><span class="p">,</span> <span class="n">x_start</span><span class="p">:</span><span class="n">x_end</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Convert color format from BGR to RGB</span>
+</span></span><span class="line"><span class="cl"><span class="n">roi</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">roi</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Display the roi</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="pixels-the-building-blocks-of-digital-images">Pixels: The Building Blocks of Digital Images</h2>
+<p>Each pixel plays a crucial role as it forms the basic unit of a digital image. Each pixel carries information about the color and intensity at its location in the image. In a grayscale image, the value of each pixel represents different shades of gray, ranging from 0 (black) to 255 (white). In color images, each pixel usually includes three values: one each for the red, green, and blue (RGB) color channels. Each of these color values also ranges from 0 to 255, allowing for over 16 million unique colors.</p>
+<p><img src="/p/understanding-images-and-pixels/rgb.png"
+	width="456"
+	height="418"
+	srcset="/p/understanding-images-and-pixels/rgb_hufccb256515d2f88b4d1848c03c4b5125_11997_480x0_resize_box_3.png 480w, /p/understanding-images-and-pixels/rgb_hufccb256515d2f88b4d1848c03c4b5125_11997_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="RGB Pixels"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="109"
+		data-flex-basis="261px"
+	
+>
+<img src="/p/understanding-images-and-pixels/bw.png"
+	width="443"
+	height="418"
+	srcset="/p/understanding-images-and-pixels/bw_hu888caa6dfac24f3c48eb636c4833ce9a_7767_480x0_resize_box_3.png 480w, /p/understanding-images-and-pixels/bw_hu888caa6dfac24f3c48eb636c4833ce9a_7767_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Black and White Pixels"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="105"
+		data-flex-basis="254px"
+	
+></p>
+<h2 id="journey-through-color-spaces">Journey Through Color Spaces</h2>
+<p>A color space is a specific organization of colors that allows for reproducible representations of color in both analog and digital formats. The most common color space is RGB, which combines Red, Green, and Blue color channels to create the range of possible colors.</p>
+<p>Another color space is the HSV (Hue, Saturation, Value), which presents color information in a more intuitive way for humans. It separates the chromatic information (hue) from the lighting (value) and chromatic intensity (saturation).</p>
+<p>The Grayscale color space includes various shades of gray, with each pixel representing the brightness of the image at that point, ranging from black to white.</p>
+<h3 id="conversion-between-color-spaces">Conversion between color spaces</h3>
+<ul>
+<li>
+<p>RGB to Grayscale: One commonly used method to convert an RGB image to grayscale is to take a weighted average of the R, G, and B values for each pixel. This accounts for human perception—we see green more strongly than other colors. The formula is typically:</p>
+<p>$$
+Grayscale = 0.2989*R + 0.5870*G + 0.1140*B
+$$</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span> <span class="c1"># Convert to grayscale</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>RGB to HSV: This conversion is more complicated, as it involves trigonometric functions. Here&rsquo;s a rough outline of the conversion:</p>
+<ul>
+<li>Calculate the maximum (Max) and minimum (Min) values among R, G, and B.</li>
+<li>The Hue (H) is calculated based on which of the R, G, or B values is the Max value. Different formulas are used depending on whether R, G, or B is the maximum.
+The Saturation (S) is calculated as $$(Max - Min) / Max$$</li>
+<li>The Value (V) is simply the Max value.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span> <span class="c1"># Convert to HSV</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>HSV to RGB: This conversion is also complex and requires different calculations depending on the value of the Hue.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2BGR</span><span class="p">)</span> <span class="c1"># Convert to RGB</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p><img src="/p/understanding-images-and-pixels/colorSpaces.png"
+	width="850"
+	height="326"
+	srcset="/p/understanding-images-and-pixels/colorSpaces_hu9372ef88a6ec104d6a8ab97622cff591_48881_480x0_resize_box_3.png 480w, /p/understanding-images-and-pixels/colorSpaces_hu9372ef88a6ec104d6a8ab97622cff591_48881_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Color Spaces"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="260"
+		data-flex-basis="625px"
+	
+></p>
+<h2 id="understanding-image-types">Understanding Image Types</h2>
+<p>Images can be broadly categorized into binary, grayscale, and color images.</p>
+<ul>
+<li>
+<p>Binary images are the simplest, containing only two pixel values, 0 and 1 - representing black and white, respectively.
+<img src="/p/understanding-images-and-pixels/binary.jpeg"
+	width="640"
+	height="425"
+	srcset="/p/understanding-images-and-pixels/binary_hue4e9d09b06b754e725749a19305b8a6e_15049_480x0_resize_q75_box.jpeg 480w, /p/understanding-images-and-pixels/binary_hue4e9d09b06b754e725749a19305b8a6e_15049_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="Binary"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="361px"
+	
+></p>
+</li>
+<li>
+<p>Grayscale images contain shades of gray, providing more depth than binary images.
+<img src="/p/understanding-images-and-pixels/bnw.jpeg"
+	width="4272"
+	height="2848"
+	srcset="/p/understanding-images-and-pixels/bnw_hu3d03a01dcc18bc5be0e67db3d8d209a6_656157_480x0_resize_q75_box.jpeg 480w, /p/understanding-images-and-pixels/bnw_hu3d03a01dcc18bc5be0e67db3d8d209a6_656157_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="Black and White"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="360px"
+	
+></p>
+</li>
+<li>
+<p>Color images, often stored in RGB format, contain color information for each pixel and provide the most visual information.
+<img src="/p/understanding-images-and-pixels/color.jpeg"
+	width="728"
+	height="546"
+	srcset="/p/understanding-images-and-pixels/color_hu26bbd792e07cdb7844e5468d198920fc_47433_480x0_resize_q75_box.jpeg 480w, /p/understanding-images-and-pixels/color_hu26bbd792e07cdb7844e5468d198920fc_47433_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="Color"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+</li>
+</ul>
+<h2 id="image-resolution-and-quality">Image Resolution and Quality</h2>
+<p>Image resolution refers to the detail an image holds and is typically described in terms of pixel dimensions (e.g., 1920x1080 pixels), where the first value is the width, and the second is the height. The resolution can impact the quality and detail of an image; the higher the resolution, the higher the number of pixels, and thus, the better the image quality.</p>
+<h2 id="image-file-formats">Image File Formats</h2>
+<p>There are many image file formats, each with its characteristics and usage scenarios.</p>
+<ul>
+<li>
+<p>JPEG (Joint Photographic Experts Group): JPEG uses lossy compression, meaning it removes some data from the image to reduce its size. This loss of data often isn&rsquo;t noticeable to the human eye in photographs, which makes JPEG excellent for photos, especially for web use where file size matters. However, this compression can degrade the quality of images with sharp edges and lines, like text or illustrations, due to a phenomenon known as &ldquo;compression artifacts.&rdquo;</p>
+</li>
+<li>
+<p>PNG (Portable Network Graphics): PNG uses lossless compression, preserving every detail of the original image. Unlike JPEG, PNG also supports transparency (alpha channel), which makes it a great choice for logos, icons, and other web graphics where a transparent background is needed. The downside is that PNG files are typically larger than JPEG files, making them less suitable for large images or photographs where file size is a concern.</p>
+</li>
+<li>
+<p>GIF (Graphics Interchange Format): GIF is a bitmap image format that supports animation. Like PNG, it also uses lossless compression and supports transparency, but it&rsquo;s limited to a palette of 256 colors. This makes GIF suitable for simple animations, especially for the web, but not for photographs or images with a lot of color detail.</p>
+</li>
+<li>
+<p>TIFF (Tagged Image File Format): TIFF is a flexible and adaptable file format that uses lossless compression, preserving image quality at the expense of file size. It supports multiple pages within a single file and is often used in the publishing industry and for storing high-quality scans. It&rsquo;s less commonly used for web graphics due to its larger file size.</p>
+</li>
+<li>
+<p>BMP (Bitmap): BMP, or bitmap, is an uncompressed raw image format that stores pixel data with no compression. This results in high-quality images but also large file sizes, making it unsuitable for web use but potentially useful in certain digital art or graphics editing contexts.</p>
+</li>
+</ul>
+<h2 id="image-data-structure">Image Data Structure</h2>
+<p>In the realm of programming, images are typically represented as multi-dimensional arrays. In a grayscale image, this is a two-dimensional array, where each entry corresponds to a pixel&rsquo;s intensity. For a color image, this is a three-dimensional array, where each pixel is represented by three intensity values for the RGB channels.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Define a 2x2 RGB color image</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>   <span class="c1"># red, green</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">]]</span>  <span class="c1"># blue, white</span>
+</span></span><span class="line"><span class="cl"><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define a 3x3 grayscale image</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>    <span class="c1"># black, gray, white</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>   <span class="c1"># dark gray, gray, light gray</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">250</span><span class="p">]</span>   <span class="c1"># light gray, very light gray, almost white</span>
+</span></span><span class="line"><span class="cl"><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, the field of digital imagery is deep and diverse, with numerous ways to represent and manipulate visual information. An understanding of these fundamental concepts - from pixels and color spaces to image types and data structures - is crucial for anyone interested in delving into the world of image processing or computer vision.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+     
+    
+        
+    
+
+    
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='8-bit, 32-bit, and 64-bit in Images'>
+<title>Understanding Bits</title>
+
+<link rel='canonical' href='https://example.com/p/understanding-bits/'>
+
+<link rel="stylesheet" href="/scss/style.min.9c211a75d0637cf30839630db280175dc68c59ff41d2aedae30ba7128288e456.css"><meta property='og:title' content='Understanding Bits'>
+<meta property='og:description' content='8-bit, 32-bit, and 64-bit in Images'>
+<meta property='og:url' content='https://example.com/p/understanding-bits/'>
+<meta property='og:site_name' content='PixelGaze'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/understanding-bits/bg.png' />
+<meta name="twitter:title" content="Understanding Bits">
+<meta name="twitter:description" content="8-bit, 32-bit, and 64-bit in Images"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/understanding-bits/bg.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hube0be085028f4eb35d0b6d840368b84a_36345_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">PixelGaze</a></h1>
+            <h2 class="site-description">All things Computer Vision!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/catplotlib'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/catplotlib'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-bit">1-bit</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#example">Example</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#8-bit">8-bit</a>
+      <ol>
+        <li><a href="#8-bit-grayscale-images">8-Bit Grayscale Images</a>
+          <ol>
+            <li><a href="#example-1">Example</a></li>
+          </ol>
+        </li>
+        <li><a href="#8-bit-color-images">8-Bit Color Images</a>
+          <ol>
+            <li><a href="#example-2">Example</a></li>
+          </ol>
+        </li>
+        <li><a href="#palettes-in-8-bit-images">Palettes in 8-Bit Images</a>
+          <ol>
+            <li><a href="#example-3">Example</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#24-bit">24-bit</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#example-4">Example</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#32-bit">32-bit</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#example-5">Example</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#64-bit">64-bit</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#example-6">Example</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#comparing-bit-depth-in-images">Comparing Bit-Depth in Images</a></li>
+    <li><a href="#applications-and-usage">Applications and Usage</a>
+      <ol>
+        <li><a href="#8-bit-1">8-bit</a></li>
+        <li><a href="#32-bit-and-64-bit">32-bit and 64-bit</a></li>
+      </ol>
+    </li>
+    <li><a href="#file-formats-and-bit-depth">File Formats and Bit Depth</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/understanding-bits/">
+                <img src="/p/understanding-bits/bg_hue236962c48fc0c7a1b6e1c9443e7aa88_137404_800x0_resize_box_3.png"
+                        srcset="/p/understanding-bits/bg_hue236962c48fc0c7a1b6e1c9443e7aa88_137404_800x0_resize_box_3.png 800w, /p/understanding-bits/bg_hue236962c48fc0c7a1b6e1c9443e7aa88_137404_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Understanding Bits" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/understanding-bits/">Understanding Bits</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            8-bit, 32-bit, and 64-bit in Images
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Bits, short for binary digits, are the fundamental units of information in computing. They are critical in the representation and processing of images. Bits are associated with an image&rsquo;s bit-depth, defining the number of levels that a particular pixel can represent. Let&rsquo;s delve into this fascinating subject.</p>
+<h1 id="bit-depth-in-images">Bit-Depth in Images</h1>
+<p>Bit-depth refers to the number of bits used to represent the color or intensity of each pixel in an image. Common bit-depths include:</p>
+<h2 id="1-bit">1-bit</h2>
+<p>1-bit images represent the most simplified form of images, where each pixel can be either black or white.</p>
+<h4 id="example">Example</h4>
+<p>Consider a monochrome image of size 2x2 pixels. An example representation could be:</p>
+<p><img src="/p/understanding-bits/1.jpeg"
+	width="3840"
+	height="2160"
+	srcset="/p/understanding-bits/1_hu8defe3ce4fcfc7358177c5e8287a7e44_45161_480x0_resize_q75_box.jpeg 480w, /p/understanding-bits/1_hu8defe3ce4fcfc7358177c5e8287a7e44_45161_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="Apple Logo"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Pixel Value</th>
+<th>Shade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Black</td>
+</tr>
+<tr>
+<td>1</td>
+<td>White</td>
+</tr>
+<tr>
+<td>1</td>
+<td>White</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Black</td>
+</tr>
+</tbody>
+</table></div>
+<p>This table corresponds to the following pixel values in binary:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8-bit">8-bit</h2>
+<p>8-bit images are the most common and widely used format. In an 8-bit grayscale image, each pixel can represent 2^8, or 256 different shades of gray. For color images in 8-bit, each channel (Red, Green, Blue) usually gets 8 bits, leading to 256 shades for each color channel and a total of 16.7 million possible colors.</p>
+<h3 id="8-bit-grayscale-images">8-Bit Grayscale Images</h3>
+<p>In 8-bit grayscale images, each pixel is represented by 8 bits, allowing for 256 different shades of gray. Here&rsquo;s how it works:</p>
+<ul>
+<li>00000000 represents the color black (0 in decimal)</li>
+<li>11111111 represents the color white (255 in decimal)</li>
+<li>Shades in between represent various shades of gray, from darkest to lightest</li>
+</ul>
+<h4 id="example-1">Example</h4>
+<p><img src="/p/understanding-bits/8bnw.png"
+	width="370"
+	height="310"
+	srcset="/p/understanding-bits/8bnw_hu6b04d0860cc463976434124ca6403e15_1372_480x0_resize_box_3.png 480w, /p/understanding-bits/8bnw_hu6b04d0860cc463976434124ca6403e15_1372_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Pikachu from Pokemon"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="286px"
+	
+></p>
+<p>Consider a grayscale image of size 2x2 pixels. An example representation could be:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Pixel Value</th>
+<th>Shade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Black</td>
+</tr>
+<tr>
+<td>255</td>
+<td>White</td>
+</tr>
+<tr>
+<td>128</td>
+<td>Mid-gray</td>
+</tr>
+<tr>
+<td>192</td>
+<td>Light gray</td>
+</tr>
+</tbody>
+</table></div>
+<p>This table corresponds to the following pixel values in binary:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>00000000</th>
+<th>11111111</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10000000</td>
+<td>11000000</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-bit-color-images">8-Bit Color Images</h3>
+<p>8-bit color images generally refer to those using 8 bits for each color channel (Red, Green, Blue). This leads to:</p>
+<ul>
+<li>256 shades for Red (2^8)</li>
+<li>256 shades for Green (2^8)</li>
+<li>256 shades for Blue (2^8)</li>
+</ul>
+<p>Multiply these together, and you have 256 x 256 x 256 = 16,777,216 possible colors.</p>
+<h4 id="example-2">Example</h4>
+<p><img src="/p/understanding-bits/8.png"
+	width="1917"
+	height="1078"
+	srcset="/p/understanding-bits/8_hu816e45a338d1d74df10330de5c524c36_240435_480x0_resize_box_3.png 480w, /p/understanding-bits/8_hu816e45a338d1d74df10330de5c524c36_240435_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Stardew Valley"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p>Consider a single pixel in an 8-bit color image. Its representation might look like this:</p>
+<ul>
+<li>Red Channel: 11000000 (192 in decimal)</li>
+<li>Green Channel: 10111100 (188 in decimal)</li>
+<li>Blue Channel: 10011100 (156 in decimal)</li>
+</ul>
+<p>Together, this forms a unique color, represented by the RGB value (192, 188, 156).</p>
+<h3 id="palettes-in-8-bit-images">Palettes in 8-Bit Images</h3>
+<p>8-bit color images can also be represented using a palette or color lookup table, where each 8-bit value corresponds to a specific color in a predefined palette of 256 colors. This approach is common in older graphics systems or specialized applications.</p>
+<h4 id="example-3">Example</h4>
+<p>In a palette-based 8-bit image, the value 10000001 might correspond to a specific shade of blue, while 10000010 might represent a particular shade of green.</p>
+<h2 id="24-bit">24-bit</h2>
+<p>24-bit images are widely used in color photography, where each pixel is represented by three 8-bit channels for Red, Green, and Blue, allowing for over 16 million possible colors.</p>
+<h4 id="example-4">Example</h4>
+<p><img src="/p/understanding-bits/24.jpeg"
+	width="384"
+	height="256"
+	srcset="/p/understanding-bits/24_hu766678cad3094b1ac471541b2f070334_30102_480x0_resize_q75_box.jpeg 480w, /p/understanding-bits/24_hu766678cad3094b1ac471541b2f070334_30102_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="Nature Photography"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="360px"
+	
+></p>
+<p>Consider a single pixel in a 24-bit color image. Its representation might look like this:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Pixel Value for Red</th>
+<th>Pixel Value for Green</th>
+<th>Pixel Value for Blue</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11000000</td>
+<td>10111100</td>
+<td>10011100</td>
+<td>Unique RGB Color</td>
+</tr>
+<tr>
+<td>01100000</td>
+<td>10011100</td>
+<td>11000000</td>
+<td>Another RGB Color</td>
+</tr>
+<tr>
+<td>10000000</td>
+<td>11000000</td>
+<td>11111111</td>
+<td>Pure Magenta</td>
+</tr>
+</tbody>
+</table></div>
+<p>This table corresponds to the following pixel values in decimal:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Red Channel</th>
+<th>Green Channel</th>
+<th>Blue Channel</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192</td>
+<td>188</td>
+<td>156</td>
+<td>Unique RGB Color</td>
+</tr>
+<tr>
+<td>96</td>
+<td>156</td>
+<td>192</td>
+<td>Another RGB Color</td>
+</tr>
+<tr>
+<td>255</td>
+<td>0</td>
+<td>255</td>
+<td>Pure Magenta</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="32-bit">32-bit</h2>
+<p>32-bit images usually include an additional 8 bits to the conventional 24-bit color scheme. These extra 8 bits are often used to represent an alpha channel, allowing for transparency and translucency in the image.</p>
+<h4 id="example-5">Example</h4>
+<p><img src="/p/understanding-bits/32.png"
+	width="1725"
+	height="1000"
+	srcset="/p/understanding-bits/32_hudebb84a65844cadf4c3764251747afd1_1972998_480x0_resize_box_3.png 480w, /p/understanding-bits/32_hudebb84a65844cadf4c3764251747afd1_1972998_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Puppy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="414px"
+	
+></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Pixel Value for Red</th>
+<th>Pixel Value for Green</th>
+<th>Pixel Value for Blue</th>
+<th>Pixel Value for Alpha</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11000000</td>
+<td>10111100</td>
+<td>10011100</td>
+<td>10000000</td>
+<td>Unique RGBA Color</td>
+</tr>
+<tr>
+<td>01100000</td>
+<td>10011100</td>
+<td>11000000</td>
+<td>01111111</td>
+<td>Another RGBA Color</td>
+</tr>
+<tr>
+<td>11111111</td>
+<td>00000000</td>
+<td>11111111</td>
+<td>00000000</td>
+<td>Pure Magenta with Full Transparency</td>
+</tr>
+</tbody>
+</table></div>
+<p>This table corresponds to the following pixel values in decimal:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Red Channel</th>
+<th>Green Channel</th>
+<th>Blue Channel</th>
+<th>Alpha Channel</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192</td>
+<td>188</td>
+<td>156</td>
+<td>128</td>
+<td>Unique RGBA Color</td>
+</tr>
+<tr>
+<td>96</td>
+<td>156</td>
+<td>192</td>
+<td>127</td>
+<td>Another RGBA Color</td>
+</tr>
+<tr>
+<td>255</td>
+<td>0</td>
+<td>255</td>
+<td>0</td>
+<td>Pure Magenta with Full Transparency</td>
+</tr>
+</tbody>
+</table></div>
+<p>These values represent the 32-bit color scheme, where each pixel is represented by three 8-bit channels for Red, Green, Blue, and an additional 8-bit channel for the Alpha, allowing for both color representation and transparency.</p>
+<h2 id="64-bit">64-bit</h2>
+<p>64-bit images represent an even higher level of quality and precision. This bit-depth is particularly useful in specialized applications such as scientific imaging, medical imaging, or high-end graphic design.</p>
+<h4 id="example-6">Example</h4>
+<p><img src="/p/understanding-bits/64.jpeg"
+	width="640"
+	height="427"
+	srcset="/p/understanding-bits/64_hu3d03a01dcc18bc5be0e67db3d8d209a6_150297_480x0_resize_q75_box.jpeg 480w, /p/understanding-bits/64_hu3d03a01dcc18bc5be0e67db3d8d209a6_150297_1024x0_resize_q75_box.jpeg 1024w"
+	loading="lazy"
+	
+		alt="Red Panda"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="149"
+		data-flex-basis="359px"
+	
+></p>
+<p>A 64-bit image may be structured as:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Value (Binary)</th>
+<th>Value (Decimal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>1100000011110000</td>
+<td>49168</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>1011110010111100</td>
+<td>47356</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>1001110010011100</td>
+<td>40252</td>
+</tr>
+<tr>
+<td>Alpha (A)</td>
+<td>1111111111111111</td>
+<td>65535</td>
+</tr>
+</tbody>
+</table></div>
+<p>In this example, the 64-bit value represents a specific color with an additional alpha channel to control transparency. The 16-bit representation for each channel allows for 65,536 different shades for each color channel, giving a highly precise color representation.</p>
+<h2 id="comparing-bit-depth-in-images">Comparing Bit-Depth in Images</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Bit Depth</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8-Bit</td>
+<td>- Compact file size<!-- raw HTML omitted -->- Suitable for simple graphics</td>
+<td>- Limited color range<!-- raw HTML omitted -->- Potential for banding artifacts</td>
+</tr>
+<tr>
+<td>24-Bit</td>
+<td>- Good color depth<!-- raw HTML omitted -->- Widely used in JPEG and other common formats</td>
+<td>- Larger file size compared to 8-bit<!-- raw HTML omitted -->- No alpha channel for transparency</td>
+</tr>
+<tr>
+<td>32-Bit</td>
+<td>- Richer color representation<!-- raw HTML omitted -->- Transparency control</td>
+<td>- Larger file size<!-- raw HTML omitted -->- Requires more processing power</td>
+</tr>
+<tr>
+<td>64-Bit</td>
+<td>- Highly accurate color representation<!-- raw HTML omitted -->- Suitable for scientific or professional-grade imaging</td>
+<td>- Very large file size<!-- raw HTML omitted -->- Not widely supported by standard viewers</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="applications-and-usage">Applications and Usage</h2>
+<h3 id="8-bit-1">8-bit</h3>
+<p>8-bit images are popular on the web due to their small file sizes. They&rsquo;re suitable for icons, logos, and simple graphics.</p>
+<h3 id="32-bit-and-64-bit">32-bit and 64-bit</h3>
+<p>Higher bit depths like 32-bit or 64-bit are used in professional photography, medical imaging, and scientific applications, where precise color representation is crucial.</p>
+<h2 id="file-formats-and-bit-depth">File Formats and Bit Depth</h2>
+<p>Different file formats support various bit depths, affecting the quality and compatibility of the image.</p>
+<ul>
+<li><strong>JPEG</strong>: Typically supports 24-bit depth, widely used for photographs.</li>
+<li><strong>PNG</strong>: Supports 8-bit (palette), 24-bit (RGB), and 32-bit (RGBA) images, commonly used for web graphics with transparency.</li>
+<li><strong>TIFF</strong>: Can handle various bit depths, including 32-bit and 64-bit, often used in professional imaging applications.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Understanding bit depth in images is not just a technical curiosity; it&rsquo;s a vital aspect of digital imaging. Selecting the appropriate bit depth for a project ensures that the images will look their best without unnecessary burdens on storage or processing resources.</p>
+<p>Whether you&rsquo;re a designer striving for perfect color reproduction, a developer optimizing web graphics, or a photographer capturing stunning visuals, knowing how to leverage bit depth can elevate your work. Keep exploring, experimenting, and learning to make the most of this fundamental aspect of digital images.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+     
+    
+        
+    
+
+    
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

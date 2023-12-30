@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A Dive into SIFT, SURF, and HOG'>
+<title>Feature Extraction in Images</title>
+
+<link rel='canonical' href='https://example.com/p/feature-extraction-in-images/'>
+
+<link rel="stylesheet" href="/scss/style.min.9c211a75d0637cf30839630db280175dc68c59ff41d2aedae30ba7128288e456.css"><meta property='og:title' content='Feature Extraction in Images'>
+<meta property='og:description' content='A Dive into SIFT, SURF, and HOG'>
+<meta property='og:url' content='https://example.com/p/feature-extraction-in-images/'>
+<meta property='og:site_name' content='PixelGaze'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/feature-extraction-in-images/intro.png' />
+<meta name="twitter:title" content="Feature Extraction in Images">
+<meta name="twitter:description" content="A Dive into SIFT, SURF, and HOG"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/feature-extraction-in-images/intro.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hube0be085028f4eb35d0b6d840368b84a_36345_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">PixelGaze</a></h1>
+            <h2 class="site-description">All things Computer Vision!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/catplotlib'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/catplotlib'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#what-are-features">What are Features?</a></li>
+    <li><a href="#why-feature-extraction">Why Feature Extraction?</a></li>
+    <li><a href="#popular-techniques">Popular Techniques</a>
+      <ol>
+        <li><a href="#sift-scale-invariant-feature-transform">SIFT (Scale-Invariant Feature Transform)</a>
+          <ol>
+            <li><a href="#how-it-works">How it Works:</a></li>
+          </ol>
+        </li>
+        <li><a href="#surf-speeded-up-robust-features">SURF (Speeded-Up Robust Features)</a>
+          <ol>
+            <li><a href="#how-it-works-1">How it Works:</a></li>
+          </ol>
+        </li>
+        <li><a href="#hog-histogram-of-oriented-gradients">HOG (Histogram of Oriented Gradients)</a>
+          <ol>
+            <li><a href="#how-it-works-2">How it Works:</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#when-to-use-what">When to Use What?</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/feature-extraction-in-images/">
+                <img src="/p/feature-extraction-in-images/intro_hu2d11cc991dad561de395bdf8b510eb5f_133085_800x0_resize_box_3.png"
+                        srcset="/p/feature-extraction-in-images/intro_hu2d11cc991dad561de395bdf8b510eb5f_133085_800x0_resize_box_3.png 800w, /p/feature-extraction-in-images/intro_hu2d11cc991dad561de395bdf8b510eb5f_133085_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="387" 
+                        loading="lazy"
+                        alt="Featured image of post Feature Extraction in Images" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/feature-extraction-in-images/">Feature Extraction in Images</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A Dive into SIFT, SURF, and HOG
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction</h2>
+<p>Hey folks! Let&rsquo;s talk about something super important in the world of computer vision and machine learning—feature extraction. Ever wondered how your phone&rsquo;s facial recognition system or Snapchat filters know exactly where your face is? That&rsquo;s right—feature extraction techniques help do the magic.</p>
+<h2 id="what-are-features">What are Features?</h2>
+<p>In simple terms, features are unique points in an image that help us understand its characteristics. Think of them like landmarks; just as you&rsquo;d use the Statue of Liberty to recognize New York, features help computers recognize patterns in images.</p>
+<p><img src="/p/feature-extraction-in-images/features.png"
+	width="275"
+	height="328"
+	srcset="/p/feature-extraction-in-images/features_hu9f1ee895aed44f6df55b8b0ce60fc5d2_165899_480x0_resize_box_3.png 480w, /p/feature-extraction-in-images/features_hu9f1ee895aed44f6df55b8b0ce60fc5d2_165899_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Features"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="83"
+		data-flex-basis="201px"
+	
+></p>
+<h2 id="why-feature-extraction">Why Feature Extraction?</h2>
+<p>Imagine you&rsquo;re flipping through your vacation photos, and you want to categorize them by location—beach, mountain, city, and so on. Your brain automatically focuses on essential elements like the sea, skyscrapers, or trees to help you categorize these pictures. Feature extraction aims to automate this process, giving computers a way to understand and categorize images effectively.</p>
+<h2 id="popular-techniques">Popular Techniques</h2>
+<p>Let&rsquo;s jump into the good stuff—popular algorithms that make all this possible.</p>
+<h3 id="sift-scale-invariant-feature-transform">SIFT (Scale-Invariant Feature Transform)</h3>
+<p>Developed by David Lowe in 1999, SIFT is a game-changer. It identifies keypoints in images and describes their local appearance. The rad thing about SIFT is its scale-invariance, meaning it&rsquo;ll recognize features whether they&rsquo;re up close or far away.</p>
+<h4 id="how-it-works">How it Works:</h4>
+<ol>
+<li><strong>Scale-Space Extrema Detection</strong>: Identifies potential interest points where object features are stable across various scales.</li>
+<li><strong>Keypoint Localization</strong>: Removes low-contrast points and edge-like points.</li>
+<li><strong>Orientation Assignment</strong>: Assigns orientation based on local image gradients.</li>
+<li><strong>Keypoint Descriptor</strong>: Describes keypoints in a way that allows for significant matching.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Read the image</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;puppy.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a SIFT object</span>
+</span></span><span class="line"><span class="cl"><span class="n">sift</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">SIFT_create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Detect keypoints and descriptors</span>
+</span></span><span class="line"><span class="cl"><span class="n">keypoints</span><span class="p">,</span> <span class="n">descriptors</span> <span class="o">=</span> <span class="n">sift</span><span class="o">.</span><span class="n">detectAndCompute</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Draw the keypoints</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_keypoints</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">drawKeypoints</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">keypoints</span><span class="p">,</span> <span class="n">outImage</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Display the results</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_with_keypoints</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SIFT Keypoints&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/feature-extraction-in-images/sift.png"
+	width="339"
+	height="427"
+	srcset="/p/feature-extraction-in-images/sift_hu24d1155f694cb7fabc02a95b874b9f0e_254309_480x0_resize_box_3.png 480w, /p/feature-extraction-in-images/sift_hu24d1155f694cb7fabc02a95b874b9f0e_254309_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="SIFT"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="190px"
+	
+></p>
+<h3 id="surf-speeded-up-robust-features">SURF (Speeded-Up Robust Features)</h3>
+<p>Think of SURF as SIFT&rsquo;s cooler, faster cousin. Developed by Herbert Bay in 2006, it&rsquo;s all about speed and efficiency while maintaining robustness.</p>
+<h4 id="how-it-works-1">How it Works:</h4>
+<ol>
+<li><strong>Interest Point Detection</strong>: Utilizes an integer approximation of the determinant of the Hessian matrix.</li>
+<li><strong>Keypoint Description</strong>: Employs Haar wavelets to describe the area around each keypoint.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Read the image</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;puppy.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a SURF object</span>
+</span></span><span class="line"><span class="cl"><span class="n">surf</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">xfeatures2d</span><span class="o">.</span><span class="n">SURF_create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Detect keypoints and descriptors</span>
+</span></span><span class="line"><span class="cl"><span class="n">keypoints</span><span class="p">,</span> <span class="n">descriptors</span> <span class="o">=</span> <span class="n">surf</span><span class="o">.</span><span class="n">detectAndCompute</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Draw the keypoints</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_with_keypoints</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">drawKeypoints</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">keypoints</span><span class="p">,</span> <span class="n">outImage</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Display the results</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_with_keypoints</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SURF Keypoints&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="hog-histogram-of-oriented-gradients">HOG (Histogram of Oriented Gradients)</h3>
+<p>Created by Navneet Dalal and Bill Triggs in 2005, HOG focuses on object detection within images. It&rsquo;s pretty popular for pedestrian detection in automotive safety.</p>
+<h4 id="how-it-works-2">How it Works:</h4>
+<ol>
+<li><strong>Gradients Computation</strong>: Calculates gradients in the x and y directions.</li>
+<li><strong>Cell Histograms</strong>: Breaks the image into cells and calculates histograms of gradients in these cells.</li>
+<li><strong>Block Normalization</strong>: Normalizes cell histograms across larger blocks to counteract lighting changes.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">feature</span><span class="p">,</span> <span class="n">exposure</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Read the image in grayscale</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;puppy.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize HOG descriptor parameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">win_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">block_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">block_stride</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cell_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nbins</span> <span class="o">=</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compute HOG features using OpenCV</span>
+</span></span><span class="line"><span class="cl"><span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">(</span><span class="n">win_size</span><span class="p">,</span> <span class="n">block_size</span><span class="p">,</span> <span class="n">block_stride</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span> <span class="n">nbins</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">hog_features</span> <span class="o">=</span> <span class="n">hog</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compute HOG features and visualize using skimage</span>
+</span></span><span class="line"><span class="cl"><span class="n">orientations</span> <span class="o">=</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="cl"><span class="n">pixels_per_cell</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cells_per_block</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hog_features</span><span class="p">,</span> <span class="n">hog_image</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">hog</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">orientations</span><span class="o">=</span><span class="n">orientations</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                      <span class="n">pixels_per_cell</span><span class="o">=</span><span class="n">pixels_per_cell</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                      <span class="n">cells_per_block</span><span class="o">=</span><span class="n">cells_per_block</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                      <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hog_image_rescaled</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">hog_image</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Show the HOG-processed image</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hog_image_rescaled</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Oriented Gradients&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/feature-extraction-in-images/hogg.png"
+	width="403"
+	height="504"
+	srcset="/p/feature-extraction-in-images/hogg_hu64e3f637048b29b8de6b8a349d7853b0_366425_480x0_resize_box_3.png 480w, /p/feature-extraction-in-images/hogg_hu64e3f637048b29b8de6b8a349d7853b0_366425_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="HOG"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="191px"
+	
+></p>
+<h2 id="when-to-use-what">When to Use What?</h2>
+<ul>
+<li><strong>SIFT</strong>: Great for object recognition where scale and orientation vary.</li>
+<li><strong>SURF</strong>: Opt for this when you need speed and can compromise a bit on accuracy.</li>
+<li><strong>HOG</strong>: Ideal for detecting objects with a well-defined shape (like pedestrians).</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Feature extraction is the unsung hero in the world of machine learning and computer vision. Techniques like SIFT, SURF, and HOG are like the tour guides that help our algorithms navigate the complex landscapes of our images. So, the next time your Snapchat filter lands perfectly on your face, you know what&rsquo;s working behind the scenes.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+     
+    
+        
+    
+
+    
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

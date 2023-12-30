@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Why Edges Matter'>
+<title>Edge Detection</title>
+
+<link rel='canonical' href='https://example.com/p/edge-detection/'>
+
+<link rel="stylesheet" href="/scss/style.min.9c211a75d0637cf30839630db280175dc68c59ff41d2aedae30ba7128288e456.css"><meta property='og:title' content='Edge Detection'>
+<meta property='og:description' content='Why Edges Matter'>
+<meta property='og:url' content='https://example.com/p/edge-detection/'>
+<meta property='og:site_name' content='PixelGaze'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/edge-detection/bg.png' />
+<meta name="twitter:title" content="Edge Detection">
+<meta name="twitter:description" content="Why Edges Matter"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/edge-detection/bg.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hube0be085028f4eb35d0b6d840368b84a_36345_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">PixelGaze</a></h1>
+            <h2 class="site-description">All things Computer Vision!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/catplotlib'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/catplotlib'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#edge-detection-as-a-filtering-process">Edge Detection as a Filtering Process</a>
+      <ol>
+        <li><a href="#filters-and-convolution">Filters and Convolution</a></li>
+        <li><a href="#how-filters-detect-edges">How Filters Detect Edges</a></li>
+      </ol>
+    </li>
+    <li><a href="#sobel-operator">Sobel Operator</a>
+      <ol>
+        <li><a href="#mathematical-interpretation">Mathematical Interpretation</a></li>
+        <li><a href="#working-of-the-sobel-operator">Working of the Sobel operator</a></li>
+      </ol>
+    </li>
+    <li><a href="#laplacian-operator">Laplacian Operator</a>
+      <ol>
+        <li><a href="#mathematical-interpretation-1">Mathematical Interpretation</a></li>
+        <li><a href="#working-of-the-laplacian-operator">Working of the Laplacian operator</a></li>
+      </ol>
+    </li>
+    <li><a href="#canny-edge-detection">Canny Edge Detection</a>
+      <ol>
+        <li><a href="#mathematical-interpretation-and-working-of-the-canny-edge-detector">Mathematical Interpretation and Working of the Canny Edge Detector</a></li>
+      </ol>
+    </li>
+    <li><a href="#comparison-of-edge-detection-filters">Comparison of Edge Detection Filters</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/edge-detection/">
+                <img src="/p/edge-detection/bg_hu0509ab6b4fa3ba335b462f3a4a7a28b0_628805_800x0_resize_box_3.png"
+                        srcset="/p/edge-detection/bg_hu0509ab6b4fa3ba335b462f3a4a7a28b0_628805_800x0_resize_box_3.png 800w, /p/edge-detection/bg_hu0509ab6b4fa3ba335b462f3a4a7a28b0_628805_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="277" 
+                        loading="lazy"
+                        alt="Featured image of post Edge Detection" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/edge-detection/">Edge Detection</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Why Edges Matter
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Edges are the places in an image where pixel values change sharply. These abrupt changes often correspond to the boundaries of objects, shadows, textures, or other significant features in a scene. Detecting these edges is critical for many computer vision tasks such as object detection, image segmentation, and more.</p>
+<p>Understanding edges allows for:</p>
+<ul>
+<li>Improved image comprehension: Helps computer vision algorithms interpret the semantics of a scene.</li>
+<li>Image compression: Edges can be used to compress data while retaining the primary features of an image.</li>
+<li>Image enhancement: Edge detection can be a precursor to tasks like image sharpening.</li>
+</ul>
+<h2 id="edge-detection-as-a-filtering-process">Edge Detection as a Filtering Process</h2>
+<p>When we discuss edge detection, we&rsquo;re really talking about the application of filters to an image. Let&rsquo;s see how that works.</p>
+<h3 id="filters-and-convolution">Filters and Convolution</h3>
+<p>A filter, often represented as a small matrix (known as a kernel), modifies an image. This modification process is termed as convolution. Convolution is a mathematical operation where we slide the filter over the input image (typically in a 3x3 or 5x5 window) to produce a new image.</p>
+<p><img src="/p/edge-detection/filter.png"
+	width="603"
+	height="290"
+	srcset="/p/edge-detection/filter_hu1ff9df61758e7ca6ec05aaf7bf7168a3_12122_480x0_resize_box_3.png 480w, /p/edge-detection/filter_hu1ff9df61758e7ca6ec05aaf7bf7168a3_12122_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sobel Filters"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="207"
+		data-flex-basis="499px"
+	
+></p>
+<p>In the context of edge detection, this convolution accentuates changes in intensity in the original image, which often correspond to edges.</p>
+<h3 id="how-filters-detect-edges">How Filters Detect Edges</h3>
+<p>Consider an image as a 2D signal. In this representation, edges are sudden changes or discontinuities in the signal. Filters designed for edge detection will respond maximally to these rapid changes, while providing minimal response to uniform regions.</p>
+<p><img src="/p/edge-detection/edge.png"
+	width="310"
+	height="389"
+	srcset="/p/edge-detection/edge_hu35c9d1376e310aa0b572c72802308350_54242_480x0_resize_box_3.png 480w, /p/edge-detection/edge_hu35c9d1376e310aa0b572c72802308350_54242_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Edge detection"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="191px"
+	
+></p>
+<h2 id="sobel-operator">Sobel Operator</h2>
+<p>The Sobel operator is one of the earliest edge detection methods. It works by convolving the image with a pair of 3x3 kernels (one for the horizontal gradient and one for the vertical gradient). The magnitude of these two gradients is combined to give the edge intensity at each point.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Define the 3x3 Sobel filters</span>
+</span></span><span class="line"><span class="cl"><span class="n">sobel_horizontal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sobel_vertical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load an image and convert to grayscale</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&#34;tiger.jpeg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Convolve the image with the Sobel filters</span>
+</span></span><span class="line"><span class="cl"><span class="n">horizontal_response</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">filter2D</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">sobel_horizontal</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vertical_response</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">filter2D</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">sobel_vertical</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="mathematical-interpretation">Mathematical Interpretation</h3>
+<p>Convolution with these filters involves passing a window over every pixel in the image. For each position of the window:</p>
+<ul>
+<li>The corresponding pixel values of the image under the kernel are multiplied with the kernel values.</li>
+<li>The results are summed up to give a single value.</li>
+<li>The center pixel of the output image for that window position is then assigned this summed value.</li>
+</ul>
+<h3 id="working-of-the-sobel-operator">Working of the Sobel operator</h3>
+<p><strong>Horizontal Edges</strong> : When a horizontal intensity change (e.g., from a dark region above a light region) is positioned under the horizontal filter, the resulting sum will be a large value, indicating the presence of an edge.</p>
+<p><strong>Vertical Edges</strong>: Conversely, vertical intensity changes produce high values when the vertical filter is applied.</p>
+<p>In essence, these filters approximate the gradient of the image intensity at each pixel, giving a measure of edge orientation and magnitude.</p>
+<p><img src="/p/edge-detection/sobel.png"
+	width="1442"
+	height="503"
+	srcset="/p/edge-detection/sobel_hu23ec17afe436eae53abfcdecf43d2004_1076533_480x0_resize_box_3.png 480w, /p/edge-detection/sobel_hu23ec17afe436eae53abfcdecf43d2004_1076533_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Sobel filter"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="286"
+		data-flex-basis="688px"
+	
+></p>
+<h2 id="laplacian-operator">Laplacian Operator</h2>
+<p>The Laplacian operator detects edges by looking for zero crossings in the second derivative of the image, essentially identifying the places where the intensity of the image changes twice rapidly.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Load the image in grayscale</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&#34;tiger.jpeg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Apply Laplacian filter</span>
+</span></span><span class="line"><span class="cl"><span class="n">laplacian</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Laplacian</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_64F</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">laplacian_abs</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">convertScaleAbs</span><span class="p">(</span><span class="n">laplacian</span><span class="p">)</span>  <span class="c1"># Convert back to 8-bit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="mathematical-interpretation-1">Mathematical Interpretation</h3>
+<p>The Laplacian of an image ( I ) is defined as:</p>
+<p>$$ [ \nabla^2 I = \frac{\partial^2 I}{\partial x^2} + \frac{\partial^2 I}{\partial y^2} ] $$</p>
+<p>This means that the Laplacian at any point in an image is the sum of the second derivatives with respect to the horizontal (x) and vertical (y) directions.</p>
+<p>In discrete image processing, this is usually approximated using a convolution with a 3x3 kernel:
+$$
+\begin{matrix}
+0 &amp; 1 &amp; 0 \\
+1 &amp; -4 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+\end{matrix}
+$$</p>
+<h3 id="working-of-the-laplacian-operator">Working of the Laplacian operator</h3>
+<p><strong>Intensity Change in Any Direction</strong> : When any form of intensity change, be it horizontal, vertical, or diagonal, is positioned under the Laplacian filter, the resulting sum will be a large value, indicating the presence of an edge.</p>
+<p><strong>Non-Edge Regions</strong>: For uniform regions, where the intensity is consistent, the Laplacian filter will produce values close to zero, indicating the absence of an edge.</p>
+<p><img src="/p/edge-detection/laplacian.png"
+	width="515"
+	height="378"
+	srcset="/p/edge-detection/laplacian_huf0fb2bd551cce28d9b44ef0e343f4f11_204209_480x0_resize_box_3.png 480w, /p/edge-detection/laplacian_huf0fb2bd551cce28d9b44ef0e343f4f11_204209_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Laplacian filter"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="326px"
+	
+></p>
+<p>In essence, the Laplacian filter captures the second derivative of the image intensity at each pixel, highlighting regions of rapid intensity change, or edges, from all orientations.
+The Laplacian operator is sensitive to noise due to the second-order derivative computation. Hence, it&rsquo;s common practice to pre-process images with a Gaussian blur before applying the Laplacian to mitigate noise influence.</p>
+<h2 id="canny-edge-detection">Canny Edge Detection</h2>
+<p>Developed by John F. Canny in 1986, the Canny edge detector is one of the most popular edge detection methods and often considered the optimal edge detection filter.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Load the image in grayscale</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&#34;tiger.jpeg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Apply Canny Edge Detection</span>
+</span></span><span class="line"><span class="cl"><span class="n">edges</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>  <span class="c1"># The values 100 and 200 are the thresholds</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="mathematical-interpretation-and-working-of-the-canny-edge-detector">Mathematical Interpretation and Working of the Canny Edge Detector</h3>
+<ol>
+<li><strong>Noise Reduction</strong>:</li>
+</ol>
+<p>Before applying any edge detection, we need to reduce the noise in the image as the edge detection is susceptible to noise in the image. The image is convolved with a Gaussian filter. Mathematically, this convolution is represented as:
+$$
+[ I&rsquo; = I * G ]
+$$
+where ( I&rsquo; ) is the smoothed image, ( I ) is the original image, and ( G ) is a Gaussian filter.</p>
+<ol start="2">
+<li><strong>Gradient Calculation</strong>:</li>
+</ol>
+<p>To detect the edges, we first need to find the gradient magnitude and direction for each pixel. The gradient of an image ( I&rsquo; ) at each pixel is a 2D vector with components given by the derivatives in the x and y directions. The gradient magnitude ( M ) and direction ( \Theta ) are computed as:
+$$
+[ M(x,y) = \sqrt{(I&rsquo;_x)^2 + (I&rsquo;_y)^2} ]
+[ \Theta(x,y) = \arctan\left(\frac{I&rsquo;_y}{I&rsquo;_x}\right) ]
+$$
+Here, ( I&rsquo;_x ) and ( I&rsquo;_y ) are the image gradients in the x and y directions, respectively, often computed using the Sobel filters.</p>
+<ol start="3">
+<li><strong>Non-maximum Suppression</strong>:</li>
+</ol>
+<p>This step ensures that the detected edges are thin. We traverse all the pixels and set the pixel to zero (non-edge) if its magnitude is not greater than its neighbors in the direction of the gradient. This reduces the thickness of the edges.</p>
+<ol start="4">
+<li><strong>Double Thresholding</strong>:</li>
+</ol>
+<p>To determine strong and weak edge pixels, a double threshold approach is applied:</p>
+<ul>
+<li>Strong edge pixels: Pixels with intensity gradient more than an upper threshold.</li>
+<li>Non-edge pixels: Pixels with values less than a lower threshold.</li>
+<li>Weak edge pixels: Pixels with values in between the lower and upper thresholds.</li>
+</ul>
+<ol start="5">
+<li><strong>Edge Tracking by Hysteresis</strong>:</li>
+</ol>
+<p>This step ensures that weak edge pixels are either transformed into strong edge pixels or discarded based on their connectivity to strong edge pixels. If a weak edge pixel is connected to strong edge pixels, it&rsquo;s transformed into a strong edge pixel; otherwise, it&rsquo;s discarded (set to zero).</p>
+<p>The hysteresis process can be visualized as a connectivity operation where weak edges that have a connection to strong edges are preserved, ensuring continuity in the detected edges.</p>
+<p><img src="/p/edge-detection/canny.png"
+	width="515"
+	height="378"
+	srcset="/p/edge-detection/canny_hueb4701a8eae8d81ab28beaefc0ed90b8_299224_480x0_resize_box_3.png 480w, /p/edge-detection/canny_hueb4701a8eae8d81ab28beaefc0ed90b8_299224_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Canny Edge Detection"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="326px"
+	
+></p>
+<p>The Canny Edge Detection algorithm combines various techniques to achieve a robust, accurate, and well-defined edge detection. The sequence of its steps – smoothing, gradient computation, non-maximum suppression, double thresholding, and edge tracking – ensures that it&rsquo;s resistant to noise, provides a clear edge map, and is able to capture true edges in the image.</p>
+<h2 id="comparison-of-edge-detection-filters">Comparison of Edge Detection Filters</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sobel</strong></td>
+<td>- Effective in detecting vertical and horizontal edges separately. <!-- raw HTML omitted --> - Less sensitive to noise compared to the Laplacian.</td>
+<td>- May not effectively capture diagonal edges unless both filters (horizontal and vertical) are used. <!-- raw HTML omitted --> - Edges might be thick and might require further processing for thinning.</td>
+</tr>
+<tr>
+<td><strong>Laplacian</strong></td>
+<td>- Captures edges from all orientations without the need for multiple filters. <!-- raw HTML omitted -->  - Produces a single output highlighting rapid intensity changes.</td>
+<td>- Very sensitive to noise due to second-order derivative computation. <!-- raw HTML omitted --> - Can produce double-edge effect where edges appear thicker.</td>
+</tr>
+<tr>
+<td><strong>Canny</strong></td>
+<td>- Produces thin, well-defined edges. <!-- raw HTML omitted --> - Has built-in noise reduction step. <!-- raw HTML omitted --> - Considers edge directions and magnitudes leading to more accurate edge detection.</td>
+<td>- Requires more computation due to multiple stages involved. <!-- raw HTML omitted --> - Threshold values for edge detection need to be carefully selected for best results.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="conclusion">Conclusion</h2>
+<p>Edge detection is fundamental in computer vision, and understanding the underlying methods provides a robust foundation for more advanced tasks.  Filters are the foundational elements of edge detection. By designing filters that respond maximally to changes in intensity and employing techniques like non-maximum suppression, we can effectively highlight and isolate edges in images. Grasping the filtering process is crucial for understanding the essence of edge detection and, by extension, a multitude of other operations in image processing and computer vision. While the Sobel, Laplacian, and Canny methods are popular, many other techniques are available. The choice of method often depends on the specific application and the nature of the images being processed.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+     
+    
+        
+    
+
+    
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

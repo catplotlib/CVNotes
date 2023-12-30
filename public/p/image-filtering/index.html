@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Understanding Filters and Applications'>
+<title>Image Filtering</title>
+
+<link rel='canonical' href='https://example.com/p/image-filtering/'>
+
+<link rel="stylesheet" href="/scss/style.min.9c211a75d0637cf30839630db280175dc68c59ff41d2aedae30ba7128288e456.css"><meta property='og:title' content='Image Filtering'>
+<meta property='og:description' content='Understanding Filters and Applications'>
+<meta property='og:url' content='https://example.com/p/image-filtering/'>
+<meta property='og:site_name' content='PixelGaze'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/image-filtering/bg.jpeg' />
+<meta name="twitter:title" content="Image Filtering">
+<meta name="twitter:description" content="Understanding Filters and Applications"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/image-filtering/bg.jpeg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hube0be085028f4eb35d0b6d840368b84a_36345_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">PixelGaze</a></h1>
+            <h2 class="site-description">All things Computer Vision!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/catplotlib'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/catplotlib'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#gaussian-filter">Gaussian Filter</a>
+      <ol>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#application-in-python">Application in Python</a></li>
+      </ol>
+    </li>
+    <li><a href="#median-filter">Median Filter</a>
+      <ol>
+        <li><a href="#how-it-works-1">How It Works</a></li>
+        <li><a href="#application-in-python-1">Application in Python</a></li>
+      </ol>
+    </li>
+    <li><a href="#bilateral-filter">Bilateral Filter</a>
+      <ol>
+        <li><a href="#how-it-works-2">How It Works</a></li>
+        <li><a href="#application-in-python-2">Application in Python</a></li>
+      </ol>
+    </li>
+    <li><a href="#non-local-means-filter">Non-Local Means Filter</a>
+      <ol>
+        <li><a href="#how-it-works-3">How It Works</a></li>
+        <li><a href="#application-in-python-3">Application in Python</a></li>
+      </ol>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/image-filtering/">
+                <img src="/p/image-filtering/bg_hu3d03a01dcc18bc5be0e67db3d8d209a6_75460_800x0_resize_q75_box.jpeg"
+                        srcset="/p/image-filtering/bg_hu3d03a01dcc18bc5be0e67db3d8d209a6_75460_800x0_resize_q75_box.jpeg 800w, /p/image-filtering/bg_hu3d03a01dcc18bc5be0e67db3d8d209a6_75460_1600x0_resize_q75_box.jpeg 1600w"
+                        width="800" 
+                        height="534" 
+                        loading="lazy"
+                        alt="Featured image of post Image Filtering" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/image-filtering/">Image Filtering</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Understanding Filters and Applications
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Image filtering is the process of modifying or enhancing an image by applying a mathematical operation. By using various filters, you can emphasize certain features or remove unwanted noise in the image. This is critical in many image processing tasks, including noise reduction, edge detection, and image smoothing.</p>
+<h1 id="understanding-image-filters">Understanding Image Filters</h1>
+<p>Filters are generally applied using convolution, similar to edge detection. Different filters emphasize different features in an image, and their design is critical to their function. Two common types of filters are Gaussian and Median filters, each with specific applications.</p>
+<h2 id="gaussian-filter">Gaussian Filter</h2>
+<p>The Gaussian filter is one of the most widely used filters in image processing. It is named after the mathematical function that forms the shape of the filter, the Gaussian function.</p>
+<h3 id="how-it-works">How It Works</h3>
+<p>The Gaussian filter smooths the image by averaging nearby pixels with a Gaussian function. This weighted average considers the distance of pixels from the center, giving more weight to closer pixels. Mathematically, it can be represented as:</p>
+<p>$$ [ G(x, y) = \frac{1}{2\pi\sigma^2} e^{-\frac{x^2 + y^2}{2\sigma^2}} ] $$</p>
+<p>Here, sigma is the standard deviation of the distribution, controlling the spread of the filter.</p>
+<h3 id="application-in-python">Application in Python</h3>
+<p>Using OpenCV, a Gaussian filter can be applied as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Apply Gaussian filter</span>
+</span></span><span class="line"><span class="cl"><span class="n">gaussian_blurred</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Here&rsquo;s a breakdown of the components:</p>
+<ul>
+<li>image: The input image to which the Gaussian Blur will be applied.</li>
+<li>(5, 5): This tuple defines the kernel size, specifying the width and height of the Gaussian kernel. In this case, a 5x5 kernel is used, meaning that each pixel will be averaged with its 24 neighboring pixels to calculate the new value.</li>
+<li>0: This is the standard deviation in the X and Y directions. Setting this value to 0 allows the function to calculate the standard deviation from the kernel size, ensuring an optimal blurring effect without losing too much detail.</li>
+</ul>
+<p>The result, gaussian_blurred, will be a new image where the details have been softened by the Gaussian filter, effectively reducing noise and creating a blurred effect. This technique is often used in image processing to smooth out details or to pre-process images for further operations like edge detection.</p>
+<p><img src="/p/image-filtering/gblur.png"
+	width="761"
+	height="427"
+	srcset="/p/image-filtering/gblur_hub3d0d67c3a3aefc2ebb616395aec5a0d_535664_480x0_resize_box_3.png 480w, /p/image-filtering/gblur_hub3d0d67c3a3aefc2ebb616395aec5a0d_535664_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Gaussian Filter"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="427px"
+	
+></p>
+<h2 id="median-filter">Median Filter</h2>
+<p>The Median filter is another widely used filter, especially for noise reduction. Unlike the Gaussian filter, it doesn&rsquo;t use a mathematical function for weighting.</p>
+<h3 id="how-it-works-1">How It Works</h3>
+<p>The Median filter takes a neighborhood around each pixel, sorts the values, and then replaces the pixel with the median of those values. This is particularly effective in removing &lsquo;salt-and-pepper&rsquo; noise, as it preserves edges while removing isolated noise.</p>
+<h3 id="application-in-python-1">Application in Python</h3>
+<p>Using OpenCV, you can apply a Median filter like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Apply Median filter</span>
+</span></span><span class="line"><span class="cl"><span class="n">median_blurred</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Here&rsquo;s a breakdown of the components:</p>
+<ul>
+<li>image: The input image on which the Median Blur filter will be applied.</li>
+<li>5: This number specifies the kernel size. In this case, it is set to 5, meaning that a 5x5 window will be used. The Median Blur works by sorting the pixel values within this window and replacing the central pixel with the median value from those sorted values.</li>
+</ul>
+<p>The result, median_blurred, is a new image where the details have been softened by the Median filter. Unlike Gaussian Blur, which uses the mean value, Median Blur uses the median, making it particularly effective at preserving edges while reducing &ldquo;salt-and-pepper&rdquo; noise. This filter is often used in image processing when you want to reduce noise in an image without blurring the edges too much.</p>
+<p><img src="/p/image-filtering/mblur.png"
+	width="761"
+	height="427"
+	srcset="/p/image-filtering/mblur_hu8c8b9bc8ec7dba9f46885435171e385a_522811_480x0_resize_box_3.png 480w, /p/image-filtering/mblur_hu8c8b9bc8ec7dba9f46885435171e385a_522811_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Median Filter"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="427px"
+	
+></p>
+<h2 id="bilateral-filter">Bilateral Filter</h2>
+<p>The Bilateral filter is a non-linear filter that preserves edges while reducing noise by considering both spatial and intensity differences. It smooths pixels that are close in both position and intensity, reducing noise without blurring edges.</p>
+<h3 id="how-it-works-2">How It Works</h3>
+<p>The filter considers not only the spatial proximity but also the intensity similarity, making sure that edges are preserved while smoothing the image.</p>
+<h3 id="application-in-python-2">Application in Python</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Apply Bilateral filter</span>
+</span></span><span class="line"><span class="cl"><span class="n">bilateral_blurred</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Source Image: The input image to which the Bilateral filter will be applied.</li>
+<li>Diameter of Pixel Neighborhood: Specifies the size of the neighborhood considered for filtering (9 in this example). The greater the diameter, the more pixels will be included in the calculation.</li>
+<li>Spatial Sigma (75): Controls how close neighboring pixels need to be to influence each other. A higher value means that farther pixels will influence each other more.</li>
+<li>Intensity Sigma (75): Controls how similar the intensities of neighboring pixels must be to influence each other. A higher value means that pixels with more different intensities will influence each other.</li>
+</ul>
+<p><img src="/p/image-filtering/bblur.png"
+	width="761"
+	height="427"
+	srcset="/p/image-filtering/bblur_hu4655e162a881fd840514487bc3b695c3_529217_480x0_resize_box_3.png 480w, /p/image-filtering/bblur_hu4655e162a881fd840514487bc3b695c3_529217_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Bilateral Filter"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="427px"
+	
+></p>
+<h2 id="non-local-means-filter">Non-Local Means Filter</h2>
+<p>The Non-Local Means filter is an algorithm used for image denoising. Unlike &ldquo;local mean&rdquo; filters, it averages similar patches from the entire image.</p>
+<h3 id="how-it-works-3">How It Works</h3>
+<p>The filter compares all possible patches to all other patches in the image, effectively removing noise.</p>
+<h3 id="application-in-python-3">Application in Python</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">skimage.restoration</span> <span class="kn">import</span> <span class="n">denoise_nl_means</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Apply Non-Local Means filter</span>
+</span></span><span class="line"><span class="cl"><span class="n">nlmeans_denoised</span> <span class="o">=</span> <span class="n">denoise_nl_means</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Image Input: Takes a grayscale or color image.</li>
+<li>Parameter h: Filter strength (e.g., 30), controlling smoothing intensity.</li>
+<li>Method: Uses Non-Local Means algorithm, comparing each pixel to all others.</li>
+<li>Output: Returns a denoised image, preserving textures and details.</li>
+</ul>
+<p><img src="/p/image-filtering/nlblur.png"
+	width="761"
+	height="427"
+	srcset="/p/image-filtering/nlblur_hue3ac81b583f9053734a54897bb54573a_489192_480x0_resize_box_3.png 480w, /p/image-filtering/nlblur_hue3ac81b583f9053734a54897bb54573a_489192_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Non-Local Means filter"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="427px"
+	
+></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In the dynamic field of image processing, filters play an indispensable role in enhancing and modifying images for various applications. Through techniques such as Gaussian, Median, Bilateral, and Non-Local Means filtering, we can achieve diverse effects from noise reduction to edge preservation. Understanding the underlying mechanics of these filters and their implementation in tools like OpenCV and skimage enables both professionals and enthusiasts to craft more precise and effective image processing solutions.</p>
+<p>These methods epitomize the power of mathematical and computational techniques in transforming raw visual data into refined, usable forms, opening doors to countless possibilities in areas like computer vision, digital photography, medical imaging, and more.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+     
+    
+        
+    
+
+    
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
