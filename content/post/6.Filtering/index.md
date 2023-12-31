@@ -6,7 +6,7 @@ description = "Understanding Filters and Applications"
 image = "bg.jpeg"
 +++
 
-Image filtering is the process of modifying or enhancing an image by applying a mathematical operation. By using various filters, you can emphasize certain features or remove unwanted noise in the image. This is critical in many image processing tasks, including noise reduction, edge detection, and image smoothing.
+Image filtering is the process of modifying or enhancing an image by applying a mathematical operation. By using various filters, we can emphasize certain features or remove unwanted noise in the image. This is critical in many image processing tasks, including noise reduction, edge detection, and image smoothing.
 
 # Understanding Image Filters
 
@@ -53,7 +53,7 @@ The Median filter takes a neighborhood around each pixel, sorts the values, and 
 
 ### Application in Python
 
-Using OpenCV, you can apply a Median filter like this:
+Using OpenCV, we can apply a Median filter like this:
 
 ```python
 # Apply Median filter
@@ -65,7 +65,7 @@ Here's a breakdown of the components:
 - image: The input image on which the Median Blur filter will be applied.
 - 5: This number specifies the kernel size. In this case, it is set to 5, meaning that a 5x5 window will be used. The Median Blur works by sorting the pixel values within this window and replacing the central pixel with the median value from those sorted values.
 
-The result, median_blurred, is a new image where the details have been softened by the Median filter. Unlike Gaussian Blur, which uses the mean value, Median Blur uses the median, making it particularly effective at preserving edges while reducing "salt-and-pepper" noise. This filter is often used in image processing when you want to reduce noise in an image without blurring the edges too much.
+The result, median_blurred, is a new image where the details have been softened by the Median filter. Unlike Gaussian Blur, which uses the mean value, Median Blur uses the median, making it particularly effective at preserving edges while reducing "salt-and-pepper" noise. This filter is often used in image processing when we want to reduce noise in an image without blurring the edges too much.
 
 ![Median Filter](mblur.png)
 

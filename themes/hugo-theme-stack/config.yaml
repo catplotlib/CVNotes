@@ -117,7 +117,7 @@ params:
 
     opengraph:
         twitter:
-            # Your Twitter username
+            # Our Twitter username
             site:
 
             # Available values: summary, summary_large_image

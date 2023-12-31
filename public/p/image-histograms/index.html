@@ -199,7 +199,7 @@
     </li>
     <li><a href="#how-does-this-help-improve-image-contrast">How Does This Help Improve Image Contrast?</a></li>
     <li><a href="#histogram-equalization-the-game-changer">Histogram Equalization: The Game Changer</a></li>
-    <li><a href="#why-should-you-care">Why Should You Care?</a></li>
+    <li><a href="#why-should-we-care">Why Should We Care?</a></li>
     <li><a href="#closing-thoughts">Closing Thoughts</a></li>
   </ol>
 </nav>
@@ -277,19 +277,19 @@
     
     
     <p>Hey there! Welcome back to the blog. Today we&rsquo;re diving into the world of image histograms and how they help us improve image contrast.</p>
-<p><strong>Oh, and a quick heads-up:</strong> From now on, I&rsquo;m vowing to make these blogs less snooze-worthy and more jam-packed with info you&rsquo;ll actually use. Because let&rsquo;s face it, no one has time for boring, right?</p>
+<p><strong>Oh, and a quick heads-up:</strong> From now on, I&rsquo;m vowing to make these blogs less snooze-worthy and more jam-packed with info we&rsquo;ll actually use. Because let&rsquo;s face it, no one has time for boring, right?</p>
 <h2 id="what-the-heck-is-an-image-histogram">What the Heck is an Image Histogram?</h2>
-<p>An image histogram is basically a graphical representation of the tonal distribution in a digital image. Imagine you&rsquo;re a DJ, and each pixel is a different sound frequency—you&rsquo;d want to know how many times each frequency occurs in your mix, right? An image histogram shows you just that: it tallies up the occurrence of each pixel&rsquo;s intensity value.</p>
+<p>An image histogram is basically a graphical representation of the tonal distribution in a digital image. Imagine we&rsquo;re a DJ, and each pixel is a different sound frequency—we&rsquo;d want to know how many times each frequency occurs in our mix, right? An image histogram shows we just that: it tallies up the occurrence of each pixel&rsquo;s intensity value.</p>
 <p>Let&rsquo;s break it down:</p>
 <ul>
 <li>X-axis: Represents pixel values (usually ranging from 0 to 255)</li>
 <li>Y-axis: The number of pixels in the image with the corresponding pixel value</li>
 </ul>
-<p>A high peak at a certain pixel value? That means a lot of pixels in your image have that intensity. Understanding the histogram helps you grasp the distribution of dark, middle-tone, and bright pixels, and that&rsquo;s crucial for many image processing tasks.</p>
+<p>A high peak at a certain pixel value? That means a lot of pixels in our image have that intensity. Understanding the histogram helps we grasp the distribution of dark, middle-tone, and bright pixels, and that&rsquo;s crucial for many image processing tasks.</p>
 <h2 id="black--white-vs-color-histograms-whats-the-difference">Black &amp; White vs Color Histograms: What&rsquo;s the Difference?</h2>
-<p>You might be wondering, why even bother with color histograms when you can get a quick overview with a simple grayscale histogram? Well, there&rsquo;s more than meets the eye, so let&rsquo;s dive in.</p>
+<p>We might be wondering, why even bother with color histograms when we can get a quick overview with a simple grayscale histogram? Well, there&rsquo;s more than meets the eye, so let&rsquo;s dive in.</p>
 <h3 id="grayscale-histograms">Grayscale Histograms</h3>
-<p>In a grayscale image, each pixel has a single intensity value, ranging usually from 0 (black) to 255 (white). A grayscale histogram, therefore, represents the distribution of these pixel intensity values across the image. It&rsquo;s the perfect tool for understanding the contrast, brightness, and overall intensity distribution of an image, but it doesn&rsquo;t tell you anything about the colors present.</p>
+<p>In a grayscale image, each pixel has a single intensity value, ranging usually from 0 (black) to 255 (white). A grayscale histogram, therefore, represents the distribution of these pixel intensity values across the image. It&rsquo;s the perfect tool for understanding the contrast, brightness, and overall intensity distribution of an image, but it doesn&rsquo;t tell we anything about the colors present.</p>
 <p><img src="/p/image-histograms/bnwimg.png"
 	width="868"
 	height="470"
@@ -305,7 +305,7 @@
 	
 ></p>
 <h3 id="color-histograms">Color Histograms</h3>
-<p>Color histograms, on the other hand, consider the distribution of pixel values across each color channel—usually Red, Green, and Blue (RGB). This means you actually get three separate histograms, one for each channel. Sometimes, these are combined into a single plot for easier comparison.</p>
+<p>Color histograms, on the other hand, consider the distribution of pixel values across each color channel—usually Red, Green, and Blue (RGB). This means we actually get three separate histograms, one for each channel. Sometimes, these are combined into a single plot for easier comparison.</p>
 <p><img src="/p/image-histograms/imghist.png"
 	width="1023"
 	height="547"
@@ -320,17 +320,17 @@
 		data-flex-basis="448px"
 	
 ></p>
-<p>So what&rsquo;s the advantage? With color histograms, you can grasp the color balance and color distribution in the image, something a grayscale histogram simply can&rsquo;t tell you. This is crucial when you&rsquo;re working on tasks that involve color recognition, color-based filtering, or even just basic image editing to get those Instagram-worthy shots.</p>
+<p>So what&rsquo;s the advantage? With color histograms, we can grasp the color balance and color distribution in the image, something a grayscale histogram simply can&rsquo;t tell we. This is crucial when we&rsquo;re working on tasks that involve color recognition, color-based filtering, or even just basic image editing to get those Instagram-worthy shots.</p>
 <h3 id="when-to-use-which">When to Use Which?</h3>
-<p>Use Grayscale Histograms: When you&rsquo;re interested in the contrast and brightness of the image.</p>
-<p>Use Color Histograms: When the color information in the image is important for your task.</p>
-<p>Understanding both types of histograms gives you a more rounded perspective on your image data, allowing you to make more informed decisions in your image processing journey.</p>
+<p>Use Grayscale Histograms: When we&rsquo;re interested in the contrast and brightness of the image.</p>
+<p>Use Color Histograms: When the color information in the image is important for our task.</p>
+<p>Understanding both types of histograms gives we a more rounded perspective on our image data, allowing we to make more informed decisions in our image processing journey.</p>
 <h2 id="how-does-this-help-improve-image-contrast">How Does This Help Improve Image Contrast?</h2>
-<p>When all the pixel intensities in your image are similar, it&rsquo;s like listening to a song with a single note playing over and over—monotonous, right? You can&rsquo;t really make out details in the image because there&rsquo;s not much difference in light and dark areas. When pixel intensities are spread out, the contrast is generally better.</p>
+<p>When all the pixel intensities in our image are similar, it&rsquo;s like listening to a song with a single note playing over and over—monotonous, right? We can&rsquo;t really make out details in the image because there&rsquo;s not much difference in light and dark areas. When pixel intensities are spread out, the contrast is generally better.</p>
 <p>By &ldquo;stretching&rdquo; the histogram (making sure pixel intensities cover a broad range), we can improve contrast and make the image pop. This is where histogram equalization comes into play.</p>
 <h2 id="histogram-equalization-the-game-changer">Histogram Equalization: The Game Changer</h2>
 <p>Histogram equalization is the process of redistributing pixel intensities. The goal? To flatten and stretch the histogram so that it&rsquo;s as evenly distributed as possible. This makes the darker areas brighter and the brighter areas, well, properly bright.</p>
-<p>Here’s a step-by-step process, assuming you&rsquo;re using Python and OpenCV:</p>
+<p>Here’s a step-by-step process, assuming we&rsquo;re using Python and OpenCV:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -371,10 +371,10 @@
 		data-flex-basis="226px"
 	
 ></p>
-<h2 id="why-should-you-care">Why Should You Care?</h2>
-<p>Well, first off, improving image contrast enhances visibility, making it easier for both humans and machine learning algorithms to interpret the image. So, if you&rsquo;re dabbling in machine learning or computer vision, this is a must-know. Plus, if you’re into photography or graphic design, understanding histograms can give you greater control over your digital creations.</p>
+<h2 id="why-should-we-care">Why Should We Care?</h2>
+<p>Well, first off, improving image contrast enhances visibility, making it easier for both humans and machine learning algorithms to interpret the image. So, if we&rsquo;re dabbling in machine learning or computer vision, this is a must-know. Plus, if we’re into photography or graphic design, understanding histograms can give we greater control over our digital creations.</p>
 <h2 id="closing-thoughts">Closing Thoughts</h2>
-<p>So that&rsquo;s the 101 on image histograms and how they can be a powerful tool for improving image contrast. In the grand scheme of things, this is a pretty basic yet critical concept to understand if you&rsquo;re looking to become proficient in image processing.</p>
+<p>So that&rsquo;s the 101 on image histograms and how they can be a powerful tool for improving image contrast. In the grand scheme of things, this is a pretty basic yet critical concept to understand if we&rsquo;re looking to become proficient in image processing.</p>
 
 </section>
 

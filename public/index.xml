@@ -12,7 +12,7 @@
         <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/p/noise-reduction-in-images/</guid>
-        <description>&lt;img src="https://example.com/p/noise-reduction-in-images/h.png" alt="Featured image of post Noise Reduction in Images" /&gt;&lt;p&gt;Hey there! Today we&amp;rsquo;re diving deep into the world of image noise and its reduction techniques. If you&amp;rsquo;ve ever snapped a photo in low light conditions or dealt with raw sensor data, you&amp;rsquo;ve likely encountered image noise. This pesky artifact can compromise image quality, making it difficult for both humans and algorithms to interpret the content. In this blog, we&amp;rsquo;ll discuss different types of noise and how to tackle them using Python and OpenCV.&lt;/p&gt;
+        <description>&lt;img src="https://example.com/p/noise-reduction-in-images/h.png" alt="Featured image of post Noise Reduction in Images" /&gt;&lt;p&gt;Hey there! Today we&amp;rsquo;re diving deep into the world of image noise and its reduction techniques. If we&amp;rsquo;ve ever snapped a photo in low light conditions or dealt with raw sensor data, we&amp;rsquo;ve likely encountered image noise. This pesky artifact can compromise image quality, making it difficult for both humans and algorithms to interpret the content. In this blog, we&amp;rsquo;ll discuss different types of noise and how to tackle them using Python and OpenCV.&lt;/p&gt;
 &lt;h2 id=&#34;understanding-image-noise&#34;&gt;Understanding Image Noise&lt;/h2&gt;
 &lt;h3 id=&#34;types-of-noise&#34;&gt;Types of Noise&lt;/h3&gt;
 &lt;ul&gt;
@@ -63,7 +63,7 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;implementing-noise-reduction-techniques&#34;&gt;Implementing Noise Reduction Techniques&lt;/h2&gt;
 &lt;p&gt;Let&amp;rsquo;s jump into some code! We&amp;rsquo;ll tackle noise reduction techniques for each type of noise. We&amp;rsquo;ll use OpenCV and Matplotlib for this.&lt;/p&gt;
-&lt;p&gt;First off, let&amp;rsquo;s install the required packages if you haven&amp;rsquo;t already:&lt;/p&gt;
+&lt;p&gt;First off, let&amp;rsquo;s install the required packages if we haven&amp;rsquo;t already:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -287,7 +287,7 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;We&amp;rsquo;ve explored four common types of image noise and corresponding denoising techniques. These techniques are fundamental in image processing and are commonly used in various applications from medical imaging to computer vision. Happy coding!&lt;/p&gt;
-&lt;p&gt;Hope you found this useful! Until next time, keep reducing that noise! 📸🔊🔽&lt;/p&gt;
+&lt;p&gt;Hope we found this useful! Until next time, keep reducing that noise! 📸🔊🔽&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -296,12 +296,12 @@
         <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/p/mastering-image-enhancement-techniques/</guid>
-        <description>&lt;img src="https://example.com/intro.png" alt="Featured image of post Mastering Image Enhancement Techniques" /&gt;&lt;p&gt;Hey there, tech enthusiasts! Today, we&amp;rsquo;re diving deep into the world of image enhancement. If you&amp;rsquo;ve ever wondered how to make your images pop, you&amp;rsquo;re in the right place. We&amp;rsquo;ll be exploring two powerful techniques: histogram equalization and contrast stretching. These methods are particularly useful when you&amp;rsquo;re dealing with low-contrast or poorly lit images. So, let&amp;rsquo;s get started!&lt;/p&gt;
+        <description>&lt;img src="https://example.com/intro.png" alt="Featured image of post Mastering Image Enhancement Techniques" /&gt;&lt;p&gt;Hey there, tech enthusiasts! Today, we&amp;rsquo;re diving deep into the world of image enhancement. If we&amp;rsquo;ve ever wondered how to make our images pop, we&amp;rsquo;re in the right place. We&amp;rsquo;ll be exploring two powerful techniques: histogram equalization and contrast stretching. These methods are particularly useful when we&amp;rsquo;re dealing with low-contrast or poorly lit images. So, let&amp;rsquo;s get started!&lt;/p&gt;
 &lt;h2 id=&#34;what-is-image-enhancement&#34;&gt;What is Image Enhancement?&lt;/h2&gt;
-&lt;p&gt;Before we dive in, let&amp;rsquo;s clarify what image enhancement is all about. Essentially, it&amp;rsquo;s a collection of techniques designed to improve the visual quality of an image. Whether you&amp;rsquo;re looking to sharpen an image, boost its contrast, or highlight specific features, image enhancement has got you covered.&lt;/p&gt;
+&lt;p&gt;Before we dive in, let&amp;rsquo;s clarify what image enhancement is all about. Essentially, it&amp;rsquo;s a collection of techniques designed to improve the visual quality of an image. Whether we&amp;rsquo;re looking to sharpen an image, boost its contrast, or highlight specific features, image enhancement has got we covered.&lt;/p&gt;
 &lt;h2 id=&#34;histogram-equalization&#34;&gt;Histogram Equalization&lt;/h2&gt;
 &lt;h3 id=&#34;a-quick-recap-on-histograms&#34;&gt;A Quick Recap on Histograms&lt;/h3&gt;
-&lt;p&gt;For a detailed understanding of what a histogram is, you can check out my previous blog post on &lt;a class=&#34;link&#34; href=&#34;https://catplotlib.com/p/image-histograms/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;For a detailed understanding of what a histogram is, we can check out my previous blog post on &lt;a class=&#34;link&#34; href=&#34;https://catplotlib.com/p/image-histograms/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Image Histograms&lt;/a&gt;. In short, a histogram in the context of images shows the frequency distribution of pixel intensities.&lt;/p&gt;
 &lt;h3 id=&#34;how-does-histogram-equalization-work&#34;&gt;How Does Histogram Equalization Work?&lt;/h3&gt;
 &lt;p&gt;Histogram equalization is a technique that redistributes the intensity levels of an image to span the entire range. This often leads to images with enhanced contrast and detail.&lt;/p&gt;
@@ -455,7 +455,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Both histogram equalization and contrast stretching are powerful tools for image enhancement. While histogram equalization is more effective for images with poor contrast, contrast stretching is simpler and can be more intuitive to use. Either way, mastering these techniques can significantly up your image processing game.&lt;/p&gt;
+&lt;p&gt;Both histogram equalization and contrast stretching are powerful tools for image enhancement. While histogram equalization is more effective for images with poor contrast, contrast stretching is simpler and can be more intuitive to use. Either way, mastering these techniques can significantly up our image processing game.&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s it for today! Feel free to experiment with these techniques and let me know how it goes. Until next time, happy coding!&lt;/p&gt;
 </description>
         </item>
@@ -465,19 +465,19 @@
         <pubDate>Thu, 10 Aug 2023 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/p/color-quantization/</guid>
-        <description>&lt;img src="https://example.com/p/color-quantization/intro.png" alt="Featured image of post Color Quantization" /&gt;&lt;p&gt;Hey there, guys! Today, we’re diving into the captivating world of Color Quantization. Yeah, it might sound like a complex term straight out of a sci-fi novel, but trust me, it&amp;rsquo;s both a crucial and fascinating part of image processing and machine learning. So, stick around to grasp the concept and even try your hand at reducing the number of colors in an image. Let’s get the ball rolling! 🎨&lt;/p&gt;
+        <description>&lt;img src="https://example.com/p/color-quantization/intro.png" alt="Featured image of post Color Quantization" /&gt;&lt;p&gt;Hey there, guys! Today, we’re diving into the captivating world of Color Quantization. Yeah, it might sound like a complex term straight out of a sci-fi novel, but trust me, it&amp;rsquo;s both a crucial and fascinating part of image processing and machine learning. So, stick around to grasp the concept and even try our hand at reducing the number of colors in an image. Let’s get the ball rolling! 🎨&lt;/p&gt;
 &lt;h2 id=&#34;what-the-heck-is-color-quantization&#34;&gt;What the Heck is Color Quantization?&lt;/h2&gt;
-&lt;p&gt;In the simplest terms, color quantization is a method to reduce the number of unique colors in an image while trying to maintain its visual similarity to the original. Why would you do that, you ask? Well, for several good reasons like reducing memory usage, speeding up image processing tasks, or even to apply some retro effects for design or art.&lt;/p&gt;
-&lt;h3 id=&#34;applications---where-can-you-use-it&#34;&gt;Applications - Where Can You Use It?&lt;/h3&gt;
+&lt;p&gt;In the simplest terms, color quantization is a method to reduce the number of unique colors in an image while trying to maintain its visual similarity to the original. Why would we do that, we ask? Well, for several good reasons like reducing memory usage, speeding up image processing tasks, or even to apply some retro effects for design or art.&lt;/p&gt;
+&lt;h3 id=&#34;applications---where-can-we-use-it&#34;&gt;Applications - Where Can We Use It?&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Image Compression&lt;/strong&gt;: Smaller palette means less memory. Simple as that.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Real-time Processing&lt;/strong&gt;: Think Snapchat filters, folks.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Data Visualization&lt;/strong&gt;: Less color distraction equals better interpretation.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Art and Design&lt;/strong&gt;: Ah, the vintage look!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;getting-your-hands-dirty-code-it-up&#34;&gt;Getting Your Hands Dirty: Code It Up!&lt;/h2&gt;
+&lt;h2 id=&#34;getting-our-hands-dirty-code-it-up&#34;&gt;Getting Our Hands Dirty: Code It Up!&lt;/h2&gt;
 &lt;p&gt;Alright, let’s do some real work here. We’re going to use Python and OpenCV to quantize an image. Buckle up!&lt;/p&gt;
-&lt;p&gt;First off, you&amp;rsquo;ll need to install OpenCV:&lt;/p&gt;
+&lt;p&gt;First off, we&amp;rsquo;ll need to install OpenCV:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -611,11 +611,11 @@
 		data-flex-basis=&#34;495px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;If you look closely, you&amp;rsquo;ll notice that our ginger cat is now looking somewhat simplified but still retains its essential &amp;lsquo;cat-ness&amp;rsquo;. The colors are fewer, but the image still makes sense, doesn&amp;rsquo;t it? This is the power of color quantization—maintaining the essence of the image while simplifying its color palette.&lt;/p&gt;
+&lt;p&gt;If we look closely, we&amp;rsquo;ll notice that our ginger cat is now looking somewhat simplified but still retains its essential &amp;lsquo;cat-ness&amp;rsquo;. The colors are fewer, but the image still makes sense, doesn&amp;rsquo;t it? This is the power of color quantization—maintaining the essence of the image while simplifying its color palette.&lt;/p&gt;
 &lt;h2 id=&#34;the-under-the-hood-story&#34;&gt;The Under-the-Hood Story&lt;/h2&gt;
 &lt;p&gt;The k-means algorithm is the engine driving our quantization. It clusters similar colors together and replaces them with a single color (the centroid). This way, we reduce the palette but keep the essence of the image.&lt;/p&gt;
 &lt;h2 id=&#34;wrap-up-and-next-steps&#34;&gt;Wrap Up and Next Steps&lt;/h2&gt;
-&lt;p&gt;So there you have it, folks. Color quantization is not just a fancy term; it’s a useful tool that’s worth understanding and utilizing. Whether you&amp;rsquo;re building the next killer app or designing awesome graphics, this technique can be your secret sauce.&lt;/p&gt;
+&lt;p&gt;So there we have it, folks. Color quantization is not just a fancy term; it’s a useful tool that’s worth understanding and utilizing. Whether we&amp;rsquo;re building the next killer app or designing awesome graphics, this technique can be our secret sauce.&lt;/p&gt;
 &lt;p&gt;Feel like diving deeper? Check out more advanced techniques like optimized palette selection or even diving into neural networks for super-advanced color quantization.&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s all for today! Keep hacking and stay curious. Until next time, happy coding! 🚀&lt;/p&gt;
 </description>
@@ -626,7 +626,7 @@
         <pubDate>Wed, 09 Aug 2023 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/p/image-morphology/</guid>
-        <description>&lt;img src="https://example.com/p/image-morphology/intro.png" alt="Featured image of post Image Morphology" /&gt;&lt;p&gt;Welcome back to our ongoing series on image processing. Today, we&amp;rsquo;re diving into a fascinating topic—Image Morphology. If you&amp;rsquo;ve been waiting to unleash the full power of OpenCV for some serious image transformations, buckle up! We&amp;rsquo;re about to morph (see what I did there? 😄) into experts.&lt;/p&gt;
+        <description>&lt;img src="https://example.com/p/image-morphology/intro.png" alt="Featured image of post Image Morphology" /&gt;&lt;p&gt;Welcome back to our ongoing series on image processing. Today, we&amp;rsquo;re diving into a fascinating topic—Image Morphology. If we&amp;rsquo;ve been waiting to unleash the full power of OpenCV for some serious image transformations, buckle up! We&amp;rsquo;re about to morph (see what I did there? 😄) into experts.&lt;/p&gt;
 &lt;h2 id=&#34;what-is-image-morphology-anyway&#34;&gt;What Is Image Morphology Anyway?&lt;/h2&gt;
 &lt;p&gt;In layman&amp;rsquo;s terms, image morphology is all about understanding and altering the structure and shape within an image. Think of it as the grammar that helps us understand the syntax of objects and shapes in an image. From removing noise and highlighting features to identifying separate objects, morphological operations are game-changers.&lt;/p&gt;
 &lt;h3 id=&#34;core-operations-erosion-dilation-opening-closing&#34;&gt;Core Operations: Erosion, Dilation, Opening, Closing&lt;/h3&gt;
@@ -711,7 +711,7 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;lets-get-coding-opencv-ahoy&#34;&gt;Let&amp;rsquo;s Get Coding: OpenCV Ahoy!&lt;/h2&gt;
-&lt;p&gt;Alright, enough talk. Let&amp;rsquo;s code! I assume you&amp;rsquo;ve got Python and OpenCV installed. If not, a quick &lt;code&gt;pip install opencv-python&lt;/code&gt; should set you up.&lt;/p&gt;
+&lt;p&gt;Alright, enough talk. Let&amp;rsquo;s code! I assume we&amp;rsquo;ve got Python and OpenCV installed. If not, a quick &lt;code&gt;pip install opencv-python&lt;/code&gt; should set we up.&lt;/p&gt;
 &lt;h3 id=&#34;erosion-1&#34;&gt;Erosion&lt;/h3&gt;
 &lt;p&gt;First off, we need to import our packages.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -789,7 +789,7 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;putting-it-all-together&#34;&gt;Putting It All Together&lt;/h2&gt;
-&lt;p&gt;So, how do you decide which operation to use? Honestly, it depends on your project. Erosion is amazing for edge detection, dilation for making an object more pronounced, opening for noise removal, and closing for, well, closing gaps.&lt;/p&gt;
+&lt;p&gt;So, how do we decide which operation to use? Honestly, it depends on our project. Erosion is amazing for edge detection, dilation for making an object more pronounced, opening for noise removal, and closing for, well, closing gaps.&lt;/p&gt;
 &lt;h2 id=&#34;when-to-use-what-a-guide-to-morphological-operations&#34;&gt;When to Use What: A Guide to Morphological Operations&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -822,9 +822,9 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Don&amp;rsquo;t be afraid to mix and match these techniques. Sometimes the best results come from a custom chain of operations tailored to your specific needs.&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t be afraid to mix and match these techniques. Sometimes the best results come from a custom chain of operations tailored to our specific needs.&lt;/p&gt;
 &lt;h2 id=&#34;wrapping-up&#34;&gt;Wrapping Up&lt;/h2&gt;
-&lt;p&gt;We just scratched the surface of image morphology today, but I hope you&amp;rsquo;re as excited as I am to delve even deeper. You can now tackle a whole new set of image processing problems, armed with erosion, dilation, opening, and closing. So go ahead, give your images the transformation they deserve!&lt;/p&gt;
+&lt;p&gt;We just scratched the surface of image morphology today, but I hope we&amp;rsquo;re as excited as I am to delve even deeper. We can now tackle a whole new set of image processing problems, armed with erosion, dilation, opening, and closing. So go ahead, give our images the transformation they deserve!&lt;/p&gt;
 &lt;p&gt;Until next time, happy coding! 🚀&lt;/p&gt;
 </description>
         </item>
@@ -835,9 +835,9 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
         
         <guid>https://example.com/p/feature-extraction-in-images/</guid>
         <description>&lt;img src="https://example.com/p/feature-extraction-in-images/intro.png" alt="Featured image of post Feature Extraction in Images" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Hey folks! Let&amp;rsquo;s talk about something super important in the world of computer vision and machine learning—feature extraction. Ever wondered how your phone&amp;rsquo;s facial recognition system or Snapchat filters know exactly where your face is? That&amp;rsquo;s right—feature extraction techniques help do the magic.&lt;/p&gt;
+&lt;p&gt;Hey folks! Let&amp;rsquo;s talk about something super important in the world of computer vision and machine learning—feature extraction. Ever wondered how our phone&amp;rsquo;s facial recognition system or Snapchat filters know exactly where our face is? That&amp;rsquo;s right—feature extraction techniques help do the magic.&lt;/p&gt;
 &lt;h2 id=&#34;what-are-features&#34;&gt;What are Features?&lt;/h2&gt;
-&lt;p&gt;In simple terms, features are unique points in an image that help us understand its characteristics. Think of them like landmarks; just as you&amp;rsquo;d use the Statue of Liberty to recognize New York, features help computers recognize patterns in images.&lt;/p&gt;
+&lt;p&gt;In simple terms, features are unique points in an image that help us understand its characteristics. Think of them like landmarks; just as we&amp;rsquo;d use the Statue of Liberty to recognize New York, features help computers recognize patterns in images.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/p/feature-extraction-in-images/features.png&#34;
 	width=&#34;275&#34;
 	height=&#34;328&#34;
@@ -853,7 +853,7 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;why-feature-extraction&#34;&gt;Why Feature Extraction?&lt;/h2&gt;
-&lt;p&gt;Imagine you&amp;rsquo;re flipping through your vacation photos, and you want to categorize them by location—beach, mountain, city, and so on. Your brain automatically focuses on essential elements like the sea, skyscrapers, or trees to help you categorize these pictures. Feature extraction aims to automate this process, giving computers a way to understand and categorize images effectively.&lt;/p&gt;
+&lt;p&gt;Imagine we&amp;rsquo;re flipping through our vacation photos, and we want to categorize them by location—beach, mountain, city, and so on. Our brain automatically focuses on essential elements like the sea, skyscrapers, or trees to help we categorize these pictures. Feature extraction aims to automate this process, giving computers a way to understand and categorize images effectively.&lt;/p&gt;
 &lt;h2 id=&#34;popular-techniques&#34;&gt;Popular Techniques&lt;/h2&gt;
 &lt;p&gt;Let&amp;rsquo;s jump into the good stuff—popular algorithms that make all this possible.&lt;/p&gt;
 &lt;h3 id=&#34;sift-scale-invariant-feature-transform&#34;&gt;SIFT (Scale-Invariant Feature Transform)&lt;/h3&gt;
@@ -1069,11 +1069,11 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 &lt;h2 id=&#34;when-to-use-what&#34;&gt;When to Use What?&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;SIFT&lt;/strong&gt;: Great for object recognition where scale and orientation vary.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SURF&lt;/strong&gt;: Opt for this when you need speed and can compromise a bit on accuracy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SURF&lt;/strong&gt;: Opt for this when we need speed and can compromise a bit on accuracy.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;HOG&lt;/strong&gt;: Ideal for detecting objects with a well-defined shape (like pedestrians).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Feature extraction is the unsung hero in the world of machine learning and computer vision. Techniques like SIFT, SURF, and HOG are like the tour guides that help our algorithms navigate the complex landscapes of our images. So, the next time your Snapchat filter lands perfectly on your face, you know what&amp;rsquo;s working behind the scenes.&lt;/p&gt;
+&lt;p&gt;Feature extraction is the unsung hero in the world of machine learning and computer vision. Techniques like SIFT, SURF, and HOG are like the tour guides that help our algorithms navigate the complex landscapes of our images. So, the next time our Snapchat filter lands perfectly on our face, we know what&amp;rsquo;s working behind the scenes.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1083,19 +1083,19 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
         
         <guid>https://example.com/p/image-histograms/</guid>
         <description>&lt;img src="https://example.com/p/image-histograms/intro.jpg" alt="Featured image of post Image Histograms" /&gt;&lt;p&gt;Hey there! Welcome back to the blog. Today we&amp;rsquo;re diving into the world of image histograms and how they help us improve image contrast.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Oh, and a quick heads-up:&lt;/strong&gt; From now on, I&amp;rsquo;m vowing to make these blogs less snooze-worthy and more jam-packed with info you&amp;rsquo;ll actually use. Because let&amp;rsquo;s face it, no one has time for boring, right?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Oh, and a quick heads-up:&lt;/strong&gt; From now on, I&amp;rsquo;m vowing to make these blogs less snooze-worthy and more jam-packed with info we&amp;rsquo;ll actually use. Because let&amp;rsquo;s face it, no one has time for boring, right?&lt;/p&gt;
 &lt;h2 id=&#34;what-the-heck-is-an-image-histogram&#34;&gt;What the Heck is an Image Histogram?&lt;/h2&gt;
-&lt;p&gt;An image histogram is basically a graphical representation of the tonal distribution in a digital image. Imagine you&amp;rsquo;re a DJ, and each pixel is a different sound frequency—you&amp;rsquo;d want to know how many times each frequency occurs in your mix, right? An image histogram shows you just that: it tallies up the occurrence of each pixel&amp;rsquo;s intensity value.&lt;/p&gt;
+&lt;p&gt;An image histogram is basically a graphical representation of the tonal distribution in a digital image. Imagine we&amp;rsquo;re a DJ, and each pixel is a different sound frequency—we&amp;rsquo;d want to know how many times each frequency occurs in our mix, right? An image histogram shows we just that: it tallies up the occurrence of each pixel&amp;rsquo;s intensity value.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s break it down:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;X-axis: Represents pixel values (usually ranging from 0 to 255)&lt;/li&gt;
 &lt;li&gt;Y-axis: The number of pixels in the image with the corresponding pixel value&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;A high peak at a certain pixel value? That means a lot of pixels in your image have that intensity. Understanding the histogram helps you grasp the distribution of dark, middle-tone, and bright pixels, and that&amp;rsquo;s crucial for many image processing tasks.&lt;/p&gt;
+&lt;p&gt;A high peak at a certain pixel value? That means a lot of pixels in our image have that intensity. Understanding the histogram helps we grasp the distribution of dark, middle-tone, and bright pixels, and that&amp;rsquo;s crucial for many image processing tasks.&lt;/p&gt;
 &lt;h2 id=&#34;black--white-vs-color-histograms-whats-the-difference&#34;&gt;Black &amp;amp; White vs Color Histograms: What&amp;rsquo;s the Difference?&lt;/h2&gt;
-&lt;p&gt;You might be wondering, why even bother with color histograms when you can get a quick overview with a simple grayscale histogram? Well, there&amp;rsquo;s more than meets the eye, so let&amp;rsquo;s dive in.&lt;/p&gt;
+&lt;p&gt;We might be wondering, why even bother with color histograms when we can get a quick overview with a simple grayscale histogram? Well, there&amp;rsquo;s more than meets the eye, so let&amp;rsquo;s dive in.&lt;/p&gt;
 &lt;h3 id=&#34;grayscale-histograms&#34;&gt;Grayscale Histograms&lt;/h3&gt;
-&lt;p&gt;In a grayscale image, each pixel has a single intensity value, ranging usually from 0 (black) to 255 (white). A grayscale histogram, therefore, represents the distribution of these pixel intensity values across the image. It&amp;rsquo;s the perfect tool for understanding the contrast, brightness, and overall intensity distribution of an image, but it doesn&amp;rsquo;t tell you anything about the colors present.&lt;/p&gt;
+&lt;p&gt;In a grayscale image, each pixel has a single intensity value, ranging usually from 0 (black) to 255 (white). A grayscale histogram, therefore, represents the distribution of these pixel intensity values across the image. It&amp;rsquo;s the perfect tool for understanding the contrast, brightness, and overall intensity distribution of an image, but it doesn&amp;rsquo;t tell we anything about the colors present.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/p/image-histograms/bnwimg.png&#34;
 	width=&#34;868&#34;
 	height=&#34;470&#34;
@@ -1111,7 +1111,7 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;color-histograms&#34;&gt;Color Histograms&lt;/h3&gt;
-&lt;p&gt;Color histograms, on the other hand, consider the distribution of pixel values across each color channel—usually Red, Green, and Blue (RGB). This means you actually get three separate histograms, one for each channel. Sometimes, these are combined into a single plot for easier comparison.&lt;/p&gt;
+&lt;p&gt;Color histograms, on the other hand, consider the distribution of pixel values across each color channel—usually Red, Green, and Blue (RGB). This means we actually get three separate histograms, one for each channel. Sometimes, these are combined into a single plot for easier comparison.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/p/image-histograms/imghist.png&#34;
 	width=&#34;1023&#34;
 	height=&#34;547&#34;
@@ -1126,17 +1126,17 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 		data-flex-basis=&#34;448px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;So what&amp;rsquo;s the advantage? With color histograms, you can grasp the color balance and color distribution in the image, something a grayscale histogram simply can&amp;rsquo;t tell you. This is crucial when you&amp;rsquo;re working on tasks that involve color recognition, color-based filtering, or even just basic image editing to get those Instagram-worthy shots.&lt;/p&gt;
+&lt;p&gt;So what&amp;rsquo;s the advantage? With color histograms, we can grasp the color balance and color distribution in the image, something a grayscale histogram simply can&amp;rsquo;t tell we. This is crucial when we&amp;rsquo;re working on tasks that involve color recognition, color-based filtering, or even just basic image editing to get those Instagram-worthy shots.&lt;/p&gt;
 &lt;h3 id=&#34;when-to-use-which&#34;&gt;When to Use Which?&lt;/h3&gt;
-&lt;p&gt;Use Grayscale Histograms: When you&amp;rsquo;re interested in the contrast and brightness of the image.&lt;/p&gt;
-&lt;p&gt;Use Color Histograms: When the color information in the image is important for your task.&lt;/p&gt;
-&lt;p&gt;Understanding both types of histograms gives you a more rounded perspective on your image data, allowing you to make more informed decisions in your image processing journey.&lt;/p&gt;
+&lt;p&gt;Use Grayscale Histograms: When we&amp;rsquo;re interested in the contrast and brightness of the image.&lt;/p&gt;
+&lt;p&gt;Use Color Histograms: When the color information in the image is important for our task.&lt;/p&gt;
+&lt;p&gt;Understanding both types of histograms gives we a more rounded perspective on our image data, allowing we to make more informed decisions in our image processing journey.&lt;/p&gt;
 &lt;h2 id=&#34;how-does-this-help-improve-image-contrast&#34;&gt;How Does This Help Improve Image Contrast?&lt;/h2&gt;
-&lt;p&gt;When all the pixel intensities in your image are similar, it&amp;rsquo;s like listening to a song with a single note playing over and over—monotonous, right? You can&amp;rsquo;t really make out details in the image because there&amp;rsquo;s not much difference in light and dark areas. When pixel intensities are spread out, the contrast is generally better.&lt;/p&gt;
+&lt;p&gt;When all the pixel intensities in our image are similar, it&amp;rsquo;s like listening to a song with a single note playing over and over—monotonous, right? We can&amp;rsquo;t really make out details in the image because there&amp;rsquo;s not much difference in light and dark areas. When pixel intensities are spread out, the contrast is generally better.&lt;/p&gt;
 &lt;p&gt;By &amp;ldquo;stretching&amp;rdquo; the histogram (making sure pixel intensities cover a broad range), we can improve contrast and make the image pop. This is where histogram equalization comes into play.&lt;/p&gt;
 &lt;h2 id=&#34;histogram-equalization-the-game-changer&#34;&gt;Histogram Equalization: The Game Changer&lt;/h2&gt;
 &lt;p&gt;Histogram equalization is the process of redistributing pixel intensities. The goal? To flatten and stretch the histogram so that it&amp;rsquo;s as evenly distributed as possible. This makes the darker areas brighter and the brighter areas, well, properly bright.&lt;/p&gt;
-&lt;p&gt;Here’s a step-by-step process, assuming you&amp;rsquo;re using Python and OpenCV:&lt;/p&gt;
+&lt;p&gt;Here’s a step-by-step process, assuming we&amp;rsquo;re using Python and OpenCV:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1177,10 +1177,10 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 		data-flex-basis=&#34;226px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;why-should-you-care&#34;&gt;Why Should You Care?&lt;/h2&gt;
-&lt;p&gt;Well, first off, improving image contrast enhances visibility, making it easier for both humans and machine learning algorithms to interpret the image. So, if you&amp;rsquo;re dabbling in machine learning or computer vision, this is a must-know. Plus, if you’re into photography or graphic design, understanding histograms can give you greater control over your digital creations.&lt;/p&gt;
+&lt;h2 id=&#34;why-should-we-care&#34;&gt;Why Should We Care?&lt;/h2&gt;
+&lt;p&gt;Well, first off, improving image contrast enhances visibility, making it easier for both humans and machine learning algorithms to interpret the image. So, if we&amp;rsquo;re dabbling in machine learning or computer vision, this is a must-know. Plus, if we’re into photography or graphic design, understanding histograms can give we greater control over our digital creations.&lt;/p&gt;
 &lt;h2 id=&#34;closing-thoughts&#34;&gt;Closing Thoughts&lt;/h2&gt;
-&lt;p&gt;So that&amp;rsquo;s the 101 on image histograms and how they can be a powerful tool for improving image contrast. In the grand scheme of things, this is a pretty basic yet critical concept to understand if you&amp;rsquo;re looking to become proficient in image processing.&lt;/p&gt;
+&lt;p&gt;So that&amp;rsquo;s the 101 on image histograms and how they can be a powerful tool for improving image contrast. In the grand scheme of things, this is a pretty basic yet critical concept to understand if we&amp;rsquo;re looking to become proficient in image processing.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1189,7 +1189,7 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
         <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/p/image-filtering/</guid>
-        <description>&lt;img src="https://example.com/p/image-filtering/bg.jpeg" alt="Featured image of post Image Filtering" /&gt;&lt;p&gt;Image filtering is the process of modifying or enhancing an image by applying a mathematical operation. By using various filters, you can emphasize certain features or remove unwanted noise in the image. This is critical in many image processing tasks, including noise reduction, edge detection, and image smoothing.&lt;/p&gt;
+        <description>&lt;img src="https://example.com/p/image-filtering/bg.jpeg" alt="Featured image of post Image Filtering" /&gt;&lt;p&gt;Image filtering is the process of modifying or enhancing an image by applying a mathematical operation. By using various filters, we can emphasize certain features or remove unwanted noise in the image. This is critical in many image processing tasks, including noise reduction, edge detection, and image smoothing.&lt;/p&gt;
 &lt;h1 id=&#34;understanding-image-filters&#34;&gt;Understanding Image Filters&lt;/h1&gt;
 &lt;p&gt;Filters are generally applied using convolution, similar to edge detection. Different filters emphasize different features in an image, and their design is critical to their function. Two common types of filters are Gaussian and Median filters, each with specific applications.&lt;/p&gt;
 &lt;h2 id=&#34;gaussian-filter&#34;&gt;Gaussian Filter&lt;/h2&gt;
@@ -1236,7 +1236,7 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 &lt;h3 id=&#34;how-it-works-1&#34;&gt;How It Works&lt;/h3&gt;
 &lt;p&gt;The Median filter takes a neighborhood around each pixel, sorts the values, and then replaces the pixel with the median of those values. This is particularly effective in removing &amp;lsquo;salt-and-pepper&amp;rsquo; noise, as it preserves edges while removing isolated noise.&lt;/p&gt;
 &lt;h3 id=&#34;application-in-python-1&#34;&gt;Application in Python&lt;/h3&gt;
-&lt;p&gt;Using OpenCV, you can apply a Median filter like this:&lt;/p&gt;
+&lt;p&gt;Using OpenCV, we can apply a Median filter like this:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1252,7 +1252,7 @@ $$ A \bullet B = (A \oplus B) \ominus B  $$&lt;/p&gt;
 &lt;li&gt;image: The input image on which the Median Blur filter will be applied.&lt;/li&gt;
 &lt;li&gt;5: This number specifies the kernel size. In this case, it is set to 5, meaning that a 5x5 window will be used. The Median Blur works by sorting the pixel values within this window and replacing the central pixel with the median value from those sorted values.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The result, median_blurred, is a new image where the details have been softened by the Median filter. Unlike Gaussian Blur, which uses the mean value, Median Blur uses the median, making it particularly effective at preserving edges while reducing &amp;ldquo;salt-and-pepper&amp;rdquo; noise. This filter is often used in image processing when you want to reduce noise in an image without blurring the edges too much.&lt;/p&gt;
+&lt;p&gt;The result, median_blurred, is a new image where the details have been softened by the Median filter. Unlike Gaussian Blur, which uses the mean value, Median Blur uses the median, making it particularly effective at preserving edges while reducing &amp;ldquo;salt-and-pepper&amp;rdquo; noise. This filter is often used in image processing when we want to reduce noise in an image without blurring the edges too much.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/p/image-filtering/mblur.png&#34;
 	width=&#34;761&#34;
 	height=&#34;427&#34;
@@ -1630,7 +1630,7 @@ Here, ( I&amp;rsquo;_x ) and ( I&amp;rsquo;_y ) are the image gradients in the x
 &lt;p&gt;In this article, we will explore some basic yet powerful image manipulation techniques such as translation, resizing, cropping, and rotating.&lt;/p&gt;
 &lt;h2 id=&#34;translation&#34;&gt;Translation&lt;/h2&gt;
 &lt;p&gt;Image translation is a geometric transformation that maps the location of pixels in an image to a new location. In simpler terms, translation means shifting the image in any direction: up, down, left, or right.&lt;/p&gt;
-&lt;p&gt;In OpenCV, you can translate an image using the &lt;code&gt;warpAffine()&lt;/code&gt; function, which takes two arguments:&lt;/p&gt;
+&lt;p&gt;In OpenCV, we can translate an image using the &lt;code&gt;warpAffine()&lt;/code&gt; function, which takes two arguments:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;the original image&lt;/li&gt;
 &lt;li&gt;and the translation matrix.&lt;/li&gt;
@@ -1668,7 +1668,7 @@ Here, ( I&amp;rsquo;_x ) and ( I&amp;rsquo;_y ) are the image gradients in the x
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;resizing&#34;&gt;Resizing&lt;/h2&gt;
 &lt;p&gt;Resizing is another commonly used image manipulation technique. It changes the size of an image without altering its general shape.&lt;/p&gt;
-&lt;p&gt;In OpenCV, you can use the resize() function to resize an image. It takes the original image and the desired size as arguments. If you want to maintain the aspect ratio, you can calculate the aspect ratio of the original image and resize accordingly.&lt;/p&gt;
+&lt;p&gt;In OpenCV, we can use the resize() function to resize an image. It takes the original image and the desired size as arguments. If we want to maintain the aspect ratio, we can calculate the aspect ratio of the original image and resize accordingly.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1721,7 +1721,7 @@ Here, ( I&amp;rsquo;_x ) and ( I&amp;rsquo;_y ) are the image gradients in the x
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;rotating&#34;&gt;Rotating&lt;/h2&gt;
-&lt;p&gt;Rotating an image involves changing the orientation of an image by a certain angle. In OpenCV, you can use the getRotationMatrix2D() function to get a rotation matrix, and then use warpAffine() to apply this matrix.&lt;/p&gt;
+&lt;p&gt;Rotating an image involves changing the orientation of an image by a certain angle. In OpenCV, we can use the getRotationMatrix2D() function to get a rotation matrix, and then use warpAffine() to apply this matrix.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1756,7 +1756,7 @@ Here, ( I&amp;rsquo;_x ) and ( I&amp;rsquo;_y ) are the image gradients in the x
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;These are just a few examples of the many image manipulation techniques that are possible using modern imaging libraries like OpenCV.&lt;/p&gt;
-&lt;p&gt;Whether you are developing an image processing application, building a computer vision model, or simply experimenting with digital images, these tools provide a powerful way to manipulate and transform your visual data.&lt;/p&gt;
+&lt;p&gt;Whether we are developing an image processing application, building a computer vision model, or simply experimenting with digital images, these tools provide a powerful way to manipulate and transform our visual data.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1900,7 +1900,7 @@ Here, ( I&amp;rsquo;_x ) and ( I&amp;rsquo;_y ) are the image gradients in the x
 &lt;li&gt;256 shades for Green (2^8)&lt;/li&gt;
 &lt;li&gt;256 shades for Blue (2^8)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Multiply these together, and you have 256 x 256 x 256 = 16,777,216 possible colors.&lt;/p&gt;
+&lt;p&gt;Multiply these together, and we have 256 x 256 x 256 = 16,777,216 possible colors.&lt;/p&gt;
 &lt;h4 id=&#34;example-2&#34;&gt;Example&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/p/understanding-bits/8.png&#34;
 	width=&#34;1917&#34;
@@ -2189,7 +2189,7 @@ Here, ( I&amp;rsquo;_x ) and ( I&amp;rsquo;_y ) are the image gradients in the x
 &lt;/ul&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Understanding bit depth in images is not just a technical curiosity; it&amp;rsquo;s a vital aspect of digital imaging. Selecting the appropriate bit depth for a project ensures that the images will look their best without unnecessary burdens on storage or processing resources.&lt;/p&gt;
-&lt;p&gt;Whether you&amp;rsquo;re a designer striving for perfect color reproduction, a developer optimizing web graphics, or a photographer capturing stunning visuals, knowing how to leverage bit depth can elevate your work. Keep exploring, experimenting, and learning to make the most of this fundamental aspect of digital images.&lt;/p&gt;
+&lt;p&gt;Whether we&amp;rsquo;re a designer striving for perfect color reproduction, a developer optimizing web graphics, or a photographer capturing stunning visuals, knowing how to leverage bit depth can elevate our work. Keep exploring, experimenting, and learning to make the most of this fundamental aspect of digital images.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -2258,7 +2258,7 @@ Here, ( I&amp;rsquo;_x ) and ( I&amp;rsquo;_y ) are the image gradients in the x
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;img&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;imread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dog.jpeg&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Define the region of interest (roi) coordinates&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;240&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;250&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;310&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Change these as per your image and region of interest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;240&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;250&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;310&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Change these as per our image and region of interest&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Extract the region of interest (roi)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;roi&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;

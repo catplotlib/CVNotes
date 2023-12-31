@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 img = cv2.imread('dog.jpeg')
 
 # Define the region of interest (roi) coordinates
-x_start, y_start, x_end, y_end = 240,300, 250, 310  # Change these as per your image and region of interest
+x_start, y_start, x_end, y_end = 240,300, 250, 310  # Change these as per our image and region of interest
 
 # Extract the region of interest (roi)
 roi = img[y_start:y_end, x_start:x_end]

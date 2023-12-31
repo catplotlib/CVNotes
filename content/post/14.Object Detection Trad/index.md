@@ -1,7 +1,7 @@
 +++
 author = "Puja Chaudhury"
 title = "Exploring Traditional Object Detection Techniques:"
-date = "2023-12-30"
+date = "2023-11-29"
 description = "SIFT, HOG, and SVM"
 image = "intro.png"
 +++
@@ -118,7 +118,7 @@ def extract_hog_features(image_path):
     hog_features = feature.hog(image)
     return hog_features
 
-# Paths to your dataset folders
+# Paths to our dataset folders
 object_folder = 'path_to_objects_folder'
 background_folder = 'path_to_background_folder'
 

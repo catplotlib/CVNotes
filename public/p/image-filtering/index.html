@@ -289,7 +289,7 @@
     <section class="article-content">
     
     
-    <p>Image filtering is the process of modifying or enhancing an image by applying a mathematical operation. By using various filters, you can emphasize certain features or remove unwanted noise in the image. This is critical in many image processing tasks, including noise reduction, edge detection, and image smoothing.</p>
+    <p>Image filtering is the process of modifying or enhancing an image by applying a mathematical operation. By using various filters, we can emphasize certain features or remove unwanted noise in the image. This is critical in many image processing tasks, including noise reduction, edge detection, and image smoothing.</p>
 <h1 id="understanding-image-filters">Understanding Image Filters</h1>
 <p>Filters are generally applied using convolution, similar to edge detection. Different filters emphasize different features in an image, and their design is critical to their function. Two common types of filters are Gaussian and Median filters, each with specific applications.</p>
 <h2 id="gaussian-filter">Gaussian Filter</h2>
@@ -336,7 +336,7 @@
 <h3 id="how-it-works-1">How It Works</h3>
 <p>The Median filter takes a neighborhood around each pixel, sorts the values, and then replaces the pixel with the median of those values. This is particularly effective in removing &lsquo;salt-and-pepper&rsquo; noise, as it preserves edges while removing isolated noise.</p>
 <h3 id="application-in-python-1">Application in Python</h3>
-<p>Using OpenCV, you can apply a Median filter like this:</p>
+<p>Using OpenCV, we can apply a Median filter like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -352,7 +352,7 @@
 <li>image: The input image on which the Median Blur filter will be applied.</li>
 <li>5: This number specifies the kernel size. In this case, it is set to 5, meaning that a 5x5 window will be used. The Median Blur works by sorting the pixel values within this window and replacing the central pixel with the median value from those sorted values.</li>
 </ul>
-<p>The result, median_blurred, is a new image where the details have been softened by the Median filter. Unlike Gaussian Blur, which uses the mean value, Median Blur uses the median, making it particularly effective at preserving edges while reducing &ldquo;salt-and-pepper&rdquo; noise. This filter is often used in image processing when you want to reduce noise in an image without blurring the edges too much.</p>
+<p>The result, median_blurred, is a new image where the details have been softened by the Median filter. Unlike Gaussian Blur, which uses the mean value, Median Blur uses the median, making it particularly effective at preserving edges while reducing &ldquo;salt-and-pepper&rdquo; noise. This filter is often used in image processing when we want to reduce noise in an image without blurring the edges too much.</p>
 <p><img src="/p/image-filtering/mblur.png"
 	width="761"
 	height="427"

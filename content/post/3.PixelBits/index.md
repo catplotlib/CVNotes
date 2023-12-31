@@ -72,7 +72,7 @@ This table corresponds to the following pixel values in binary:
 - 256 shades for Green (2^8)
 - 256 shades for Blue (2^8)
 
-Multiply these together, and you have 256 x 256 x 256 = 16,777,216 possible colors.
+Multiply these together, and we have 256 x 256 x 256 = 16,777,216 possible colors.
 
 #### Example
 
@@ -185,6 +185,6 @@ Different file formats support various bit depths, affecting the quality and com
 
 Understanding bit depth in images is not just a technical curiosity; it's a vital aspect of digital imaging. Selecting the appropriate bit depth for a project ensures that the images will look their best without unnecessary burdens on storage or processing resources.
 
-Whether you're a designer striving for perfect color reproduction, a developer optimizing web graphics, or a photographer capturing stunning visuals, knowing how to leverage bit depth can elevate your work. Keep exploring, experimenting, and learning to make the most of this fundamental aspect of digital images.
+Whether we're a designer striving for perfect color reproduction, a developer optimizing web graphics, or a photographer capturing stunning visuals, knowing how to leverage bit depth can elevate our work. Keep exploring, experimenting, and learning to make the most of this fundamental aspect of digital images.
 
 

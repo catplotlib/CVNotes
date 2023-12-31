@@ -7,16 +7,16 @@ image = "intro.png"
 +++
 ## Introduction
 
-Hey folks! Let's talk about something super important in the world of computer vision and machine learning—feature extraction. Ever wondered how your phone's facial recognition system or Snapchat filters know exactly where your face is? That's right—feature extraction techniques help do the magic.
+Hey folks! Let's talk about something super important in the world of computer vision and machine learning—feature extraction. Ever wondered how our phone's facial recognition system or Snapchat filters know exactly where our face is? That's right—feature extraction techniques help do the magic.
 
 ## What are Features?
 
-In simple terms, features are unique points in an image that help us understand its characteristics. Think of them like landmarks; just as you'd use the Statue of Liberty to recognize New York, features help computers recognize patterns in images.
+In simple terms, features are unique points in an image that help us understand its characteristics. Think of them like landmarks; just as we'd use the Statue of Liberty to recognize New York, features help computers recognize patterns in images.
 
 ![Features](features.png)
 ## Why Feature Extraction?
 
-Imagine you're flipping through your vacation photos, and you want to categorize them by location—beach, mountain, city, and so on. Your brain automatically focuses on essential elements like the sea, skyscrapers, or trees to help you categorize these pictures. Feature extraction aims to automate this process, giving computers a way to understand and categorize images effectively.
+Imagine we're flipping through our vacation photos, and we want to categorize them by location—beach, mountain, city, and so on. Our brain automatically focuses on essential elements like the sea, skyscrapers, or trees to help we categorize these pictures. Feature extraction aims to automate this process, giving computers a way to understand and categorize images effectively.
 
 ## Popular Techniques
 
@@ -133,9 +133,9 @@ plt.show()
 ## When to Use What?
 
 - **SIFT**: Great for object recognition where scale and orientation vary.
-- **SURF**: Opt for this when you need speed and can compromise a bit on accuracy.
+- **SURF**: Opt for this when we need speed and can compromise a bit on accuracy.
 - **HOG**: Ideal for detecting objects with a well-defined shape (like pedestrians).
 
 ## Conclusion
 
-Feature extraction is the unsung hero in the world of machine learning and computer vision. Techniques like SIFT, SURF, and HOG are like the tour guides that help our algorithms navigate the complex landscapes of our images. So, the next time your Snapchat filter lands perfectly on your face, you know what's working behind the scenes.
+Feature extraction is the unsung hero in the world of machine learning and computer vision. Techniques like SIFT, SURF, and HOG are like the tour guides that help our algorithms navigate the complex landscapes of our images. So, the next time our Snapchat filter lands perfectly on our face, we know what's working behind the scenes.

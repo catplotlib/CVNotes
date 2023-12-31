@@ -14,7 +14,7 @@ In this article, we will explore some basic yet powerful image manipulation tech
 
 Image translation is a geometric transformation that maps the location of pixels in an image to a new location. In simpler terms, translation means shifting the image in any direction: up, down, left, or right.
 
-In OpenCV, you can translate an image using the `warpAffine()` function, which takes two arguments: 
+In OpenCV, we can translate an image using the `warpAffine()` function, which takes two arguments: 
 - the original image 
 - and the translation matrix. 
 
@@ -33,7 +33,7 @@ translated = cv2.warpAffine(img, M, (img.shape[1], img.shape[0]))
 ## Resizing
 Resizing is another commonly used image manipulation technique. It changes the size of an image without altering its general shape.
 
-In OpenCV, you can use the resize() function to resize an image. It takes the original image and the desired size as arguments. If you want to maintain the aspect ratio, you can calculate the aspect ratio of the original image and resize accordingly.
+In OpenCV, we can use the resize() function to resize an image. It takes the original image and the desired size as arguments. If we want to maintain the aspect ratio, we can calculate the aspect ratio of the original image and resize accordingly.
 
 ```python
 # Resize the image
@@ -52,7 +52,7 @@ cropped = img[50:200, 100:300] # Rows 50 to 200, columns 100 to 300
 ```
 ![Cropped Image](cr.png)
 ## Rotating
-Rotating an image involves changing the orientation of an image by a certain angle. In OpenCV, you can use the getRotationMatrix2D() function to get a rotation matrix, and then use warpAffine() to apply this matrix.
+Rotating an image involves changing the orientation of an image by a certain angle. In OpenCV, we can use the getRotationMatrix2D() function to get a rotation matrix, and then use warpAffine() to apply this matrix.
 
 ```python
 # Get the rotation matrix
@@ -67,4 +67,4 @@ rotated = cv2.warpAffine(img, M, (cols, rows))
 ## Conclusion
 These are just a few examples of the many image manipulation techniques that are possible using modern imaging libraries like OpenCV. 
 
-Whether you are developing an image processing application, building a computer vision model, or simply experimenting with digital images, these tools provide a powerful way to manipulate and transform your visual data.
+Whether we are developing an image processing application, building a computer vision model, or simply experimenting with digital images, these tools provide a powerful way to manipulate and transform our visual data.

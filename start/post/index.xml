@@ -16,7 +16,7 @@
 &lt;p&gt;In this article, we will explore some basic yet powerful image manipulation techniques such as translation, resizing, cropping, and rotating.&lt;/p&gt;
 &lt;h2 id=&#34;translation&#34;&gt;Translation&lt;/h2&gt;
 &lt;p&gt;Image translation is a geometric transformation that maps the location of pixels in an image to a new location. In simpler terms, translation means shifting the image in any direction: up, down, left, or right.&lt;/p&gt;
-&lt;p&gt;In OpenCV, you can translate an image using the &lt;code&gt;warpAffine()&lt;/code&gt; function, which takes two arguments:&lt;/p&gt;
+&lt;p&gt;In OpenCV, we can translate an image using the &lt;code&gt;warpAffine()&lt;/code&gt; function, which takes two arguments:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;the original image&lt;/li&gt;
 &lt;li&gt;and the translation matrix.&lt;/li&gt;
@@ -54,7 +54,7 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;resizing&#34;&gt;Resizing&lt;/h2&gt;
 &lt;p&gt;Resizing is another commonly used image manipulation technique. It changes the size of an image without altering its general shape.&lt;/p&gt;
-&lt;p&gt;In OpenCV, you can use the resize() function to resize an image. It takes the original image and the desired size as arguments. If you want to maintain the aspect ratio, you can calculate the aspect ratio of the original image and resize accordingly.&lt;/p&gt;
+&lt;p&gt;In OpenCV, we can use the resize() function to resize an image. It takes the original image and the desired size as arguments. If we want to maintain the aspect ratio, we can calculate the aspect ratio of the original image and resize accordingly.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -107,7 +107,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;rotating&#34;&gt;Rotating&lt;/h2&gt;
-&lt;p&gt;Rotating an image involves changing the orientation of an image by a certain angle. In OpenCV, you can use the getRotationMatrix2D() function to get a rotation matrix, and then use warpAffine() to apply this matrix.&lt;/p&gt;
+&lt;p&gt;Rotating an image involves changing the orientation of an image by a certain angle. In OpenCV, we can use the getRotationMatrix2D() function to get a rotation matrix, and then use warpAffine() to apply this matrix.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -142,7 +142,7 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;These are just a few examples of the many image manipulation techniques that are possible using modern imaging libraries like OpenCV.&lt;/p&gt;
-&lt;p&gt;Whether you are developing an image processing application, building a computer vision model, or simply experimenting with digital images, these tools provide a powerful way to manipulate and transform your visual data.&lt;/p&gt;
+&lt;p&gt;Whether we are developing an image processing application, building a computer vision model, or simply experimenting with digital images, these tools provide a powerful way to manipulate and transform our visual data.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -211,7 +211,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;img&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;imread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dog.jpeg&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Define the region of interest (roi) coordinates&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;240&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;250&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;310&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Change these as per your image and region of interest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;240&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;250&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;310&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Change these as per our image and region of interest&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Extract the region of interest (roi)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;roi&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;

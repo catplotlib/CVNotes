@@ -1,6 +1,6 @@
 // Implements a scroll spy system for the ToC, displaying the current section with an indicator and scrolling to it when needed.
 
-// Inspired from https://gomakethings.com/debouncing-your-javascript-events/
+// Inspired from https://gomakethings.com/debouncing-our-javascript-events/
 function debounced(func: Function) {
     let timeout;
     return () => {

@@ -6,20 +6,20 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! Please provide as much information as possible and make sure you have checked the [documentation](https://docs.stack.jimmycai.com/).
+        Thanks for taking the time to fill out this bug report! Please provide as much information as possible and make sure we have checked the [documentation](https://docs.stack.jimmycai.com/).
   - type: textarea
     id: what-happened
     attributes:
       label: What happened?
-      description: Also tell us, what did you expect to happen? Please be as detailed as possible, include screenshots and any other information that might help us reproduce the problem.
-      placeholder: Tell us what you see!
+      description: Also tell us, what did we expect to happen? Please be as detailed as possible, include screenshots and any other information that might help us reproduce the problem.
+      placeholder: Tell us what we see!
     validations:
       required: true
   - type: input
     id: hugo-version
     attributes:
       label: Hugo version
-      description: "What is the version of Hugo you are using? (Note: this theme does not support non-extended version of Hugo)"
+      description: "What is the version of Hugo we are using? (Note: this theme does not support non-extended version of Hugo)"
       placeholder: ex. 0.100.0
     validations:
       required: true
@@ -27,14 +27,14 @@ body:
     id: theme-version
     attributes:
       label: Theme version
-      description: "What is the version of Stack theme you are using?"
+      description: "What is the version of Stack theme we are using?"
       placeholder: ex. 3.12.0
     validations:
       required: true
   - type: dropdown
     id: browsers
     attributes:
-      label: What browsers are you seeing the problem on?
+      label: What browsers are we seeing the problem on?
       multiple: true
       options:
         - Firefox
@@ -58,7 +58,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        If the issue is not present on the [demo site](https://demo.stack.jimmycai.com), in order to better understand the problem, please provide the link to the source code of your website (not the generated HTML). 
+        If the issue is not present on the [demo site](https://demo.stack.jimmycai.com), in order to better understand the problem, please provide the link to the source code of our website (not the generated HTML). 
         Or link to a minimal reproduction of the problem if there are sensible data.
   - type: input
     id: bug-url

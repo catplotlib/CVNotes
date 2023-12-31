@@ -6,17 +6,17 @@ description = "Histogram Equalization and Contrast Stretching"
 image = "intro.png"
 +++
 
-Hey there, tech enthusiasts! Today, we're diving deep into the world of image enhancement. If you've ever wondered how to make your images pop, you're in the right place. We'll be exploring two powerful techniques: histogram equalization and contrast stretching. These methods are particularly useful when you're dealing with low-contrast or poorly lit images. So, let's get started!
+Hey there, tech enthusiasts! Today, we're diving deep into the world of image enhancement. If we've ever wondered how to make our images pop, we're in the right place. We'll be exploring two powerful techniques: histogram equalization and contrast stretching. These methods are particularly useful when we're dealing with low-contrast or poorly lit images. So, let's get started!
 
 ## What is Image Enhancement?
 
-Before we dive in, let's clarify what image enhancement is all about. Essentially, it's a collection of techniques designed to improve the visual quality of an image. Whether you're looking to sharpen an image, boost its contrast, or highlight specific features, image enhancement has got you covered.
+Before we dive in, let's clarify what image enhancement is all about. Essentially, it's a collection of techniques designed to improve the visual quality of an image. Whether we're looking to sharpen an image, boost its contrast, or highlight specific features, image enhancement has got we covered.
 
 ## Histogram Equalization
 
 ### A Quick Recap on Histograms
 
-For a detailed understanding of what a histogram is, you can check out my previous blog post on [Image Histograms](https://catplotlib.com/p/image-histograms/). In short, a histogram in the context of images shows the frequency distribution of pixel intensities.
+For a detailed understanding of what a histogram is, we can check out my previous blog post on [Image Histograms](https://catplotlib.com/p/image-histograms/). In short, a histogram in the context of images shows the frequency distribution of pixel intensities.
 
 ### How Does Histogram Equalization Work?
 
@@ -95,6 +95,6 @@ cv2.imwrite('stretched_img.jpg', stretched_img)
 ![Contrast Stretching](contrast.png)
 
 ## Conclusion
-Both histogram equalization and contrast stretching are powerful tools for image enhancement. While histogram equalization is more effective for images with poor contrast, contrast stretching is simpler and can be more intuitive to use. Either way, mastering these techniques can significantly up your image processing game.
+Both histogram equalization and contrast stretching are powerful tools for image enhancement. While histogram equalization is more effective for images with poor contrast, contrast stretching is simpler and can be more intuitive to use. Either way, mastering these techniques can significantly up our image processing game.
 
 That's it for today! Feel free to experiment with these techniques and let me know how it goes. Until next time, happy coding!

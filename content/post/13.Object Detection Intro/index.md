@@ -1,7 +1,7 @@
 +++
 author = "Puja Chaudhury"
 title = "Understanding Object Detection in Computer Vision"
-date = "2023-12-29"
+date = "2023-11-29"
 description = "Exploring object detection's techniques, applications, and challenges in-depth."
 image = "intro.jpg"
 +++
